@@ -4,6 +4,7 @@ const knex = require("knex");
 const app = express();
 const port = 3001;
 
+// creates our connection using knex to our database.
 const db = knex({
     client: "pg",
     connection: {
@@ -17,9 +18,10 @@ const db = knex({
 
 app.get("/", async (req, res) => {
     try {
-        const result = await db.select("message").from("new_table").first();
+        const result = await db.select("message").from("newtable").first(); // just some query selector shite.
         const message =
             result.message || "Hello World. I like rocks and candy.";
+        // Will either provide a message if the table exists or this other hello world. Either way test works.
 
         res.send(message);
     } catch (error) {
