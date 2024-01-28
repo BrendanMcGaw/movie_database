@@ -1,8 +1,5 @@
 // creates migration.
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
+// NEVER FORGET TO ADD --MIGRATIONS-DIRECTORY WHEN CREATING YOUR FILE. PROBABLY CAN DO SOMETHING WITH CONFIG --- ASK HARRY ---
 exports.up = (knex) => {
     return knex.schema
         .createTable("movies", (table) => {
@@ -25,10 +22,6 @@ exports.up = (knex) => {
         });
 };
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 // kind of undoes migration.
 exports.down = (knex) => {
     return knex.schema.dropTable("movies");
