@@ -1,3 +1,4 @@
+// basically our connection string for our query builder knex to the postgres database image hosted on docker.
 module.exports = {
     development: {
         client: "pg",

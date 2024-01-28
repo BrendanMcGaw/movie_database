@@ -13,7 +13,7 @@ exports.up = (knex) => {
             table.string("review"); // TODO: Potentially only add this functionality for users.
             table.string("release_date").notNullable(); // apparently underscore is the bees knees when it comes to database variables. Snake case.
             table.boolean("favourite");
-        })
+        }) // note how the .createTable follows on from the previous table creation.
         .createTable("genre", (table) => {
             table.increments("id").primary(); // Automatically increments an id key for each new entry.
             table.boolean("action");
