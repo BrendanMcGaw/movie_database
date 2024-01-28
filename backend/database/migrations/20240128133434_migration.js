@@ -14,12 +14,42 @@ exports.up = (knex) => {
             table.string("release_date").notNullable(); // apparently underscore is the bees knees when it comes to database variables. Snake case.
             table.boolean("favourite");
         })
-        .then(() => {
-            console.log("Table created successfully!");
-        })
-        .catch((err) => {
-            console.error("Error creating tables: ", err);
+        .createTable("genre", (table) => {
+            table.increments("id").primary(); // Automatically increments an id key for each new entry.
+            table.boolean("action");
+            table.boolean("adventure");
+            table.boolean("animation");
+            table.boolean("biography");
+            table.boolean("comedy");
+            table.boolean("crime");
+            table.boolean("documentary");
+            table.boolean("drama");
+            table.boolean("family");
+            table.boolean("fantasy");
+            table.boolean("film-noir");
+            table.boolean("game-show");
+            table.boolean("history");
+            table.boolean("horror");
+            table.boolean("music");
+            table.boolean("musical");
+            table.boolean("mystery");
+            table.boolean("news");
+            table.boolean("reality-tv");
+            table.boolean("romance");
+            table.boolean("sci-fi");
+            table.boolean("short");
+            table.boolean("sport");
+            table.boolean("talk-show");
+            table.boolean("thriller");
+            table.boolean("war");
+            table.boolean("western");
         });
+    // .then(() => {
+    //     console.log("Table created successfully!");
+    // })
+    // .catch((err) => {
+    //     console.error("Error creating tables: ", err);
+    // });
 };
 
 // kind of undoes migration.
