@@ -18,7 +18,7 @@ services:
         depends_on:
             - database
 
-    database: # THIS IS THE SERVICES NAME THAT YOU NEED TO USE AS THE HOST VALUE SO THAT IT FINDS YOUR LOCAL IP.
+    database: # THIS IS THE SERVICES NAME THAT YOU NEED TO USE AS THE HOST VALUE SO THAT IT FINDS THE CONTAINER?
         image: postgres:latest
         environment:
             POSTGRES_DB: postgres
@@ -26,3 +26,5 @@ services:
             POSTGRES_PASSWORD: password
         ports:
             - "5432:5432"
+        # volumes:
+        #     - ./database:/docker-entrypoint-initdb.d # Finds my database folder and mounts it into the container. Only works with SQL script.
