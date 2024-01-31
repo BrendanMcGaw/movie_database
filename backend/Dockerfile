@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3001
 
 # Start the application
-CMD ["npm", "start", "dev"]
+CMD npm run migrate && npm start dev

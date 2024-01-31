@@ -6,13 +6,13 @@ exports.up = (knex) => {
             table.increments("id").primary(); // Automatically increments an id key for each new entry.
             table.string("title").notNullable(); // Title column, can't have null.
             table.string("description").notNullable();
-            table.string("genre").notNullable();
+            // table.string("genre").notNullable();
             table.string("runtime").notNullable(); // Runtime column, can't have null.
-            table.string("director").notNullable(); // Director column, can't have null.
-            table.string("actors").notNullable(); // TODO: Add state functionality to add multiple actors. Not sure how to do this yet.
-            table.string("review"); // TODO: Potentially only add this functionality for users.
-            table.string("release_date").notNullable(); // apparently underscore is the bees knees when it comes to database variables. Snake case.
-            table.boolean("favourite");
+            // table.string("director").notNullable(); // Director column, can't have null.
+            // table.string("actors").notNullable(); // TODO: Add state functionality to add multiple actors. Not sure how to do this yet.
+            // table.string("review"); // TODO: Potentially only add this functionality for users.
+            // table.string("release_date").notNullable(); // apparently underscore is the bees knees when it comes to database variables. Snake case.
+            // table.boolean("favourite");
         }) // note how the .createTable follows on from the previous table creation.
         .createTable("genre", (table) => {
             table.increments("id").primary(); // Automatically increments an id key for each new entry.
@@ -44,7 +44,7 @@ exports.up = (knex) => {
             table.boolean("war");
             table.boolean("western");
         });
-    // .then(() => {
+    // .then(() => { TODO: // why does this not display anything in my log, it was earlier. Confused now.
     //     console.log("Table created successfully!");
     // })
     // .catch((err) => {
@@ -53,6 +53,7 @@ exports.up = (knex) => {
 };
 
 // kind of undoes migration.
+
 exports.down = (knex) => {
     return knex.schema.dropTable("movies");
 };

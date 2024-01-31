@@ -1,20 +1,13 @@
 version: "3"
 services:
-    frontend:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        ports:
-            - "3000:3000"
-        depends_on:
-            - backend
-
     backend:
         build:
             context: ./backend
             dockerfile: Dockerfile
         ports:
             - "3001:3001"
+        environment:
+            - PG_HOST=database
         depends_on:
             - database
 
@@ -24,7 +17,8 @@ services:
             POSTGRES_DB: postgres
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: password
+
         ports:
             - "5432:5432"
-        # volumes:
+        # volumes:d
         #     - ./database:/docker-entrypoint-initdb.d # Finds my database folder and mounts it into the container. Only works with SQL script.
