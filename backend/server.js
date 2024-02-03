@@ -1,15 +1,17 @@
 const express = require("express");
 const { addMovie } = require("./database/movieModel.js");
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors({ origin: true }));
 const port = 3001;
 // our exposes port on our local network.
 
 // https://en.wikipedia.org/wiki/HTTP#Request_methods
-app.get("/", async (req, res) => {
-    res.send(req.body);
-});
+// app.get("/", async (req, res) => {
+//     res.send(movieDetails);
+// });
 
 app.post("/", async (req, res) => {
     try {
