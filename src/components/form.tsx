@@ -31,11 +31,11 @@ export const MovieForm = () => {
         <form
             onSubmit={(event) => {
                 addMovies(movieDetails);
-                event.preventDefault();
+                // event.preventDefault();
             }}
         >
             <label>
-                Title:{" "}
+                Title:{""}
                 <input
                     type="text"
                     name="title"
@@ -48,6 +48,9 @@ export const MovieForm = () => {
                     }
                 />
             </label>
+            <main>
+                <p>Yes man!</p>
+            </main>
             <label>
                 Description:{" "}
                 <input
@@ -69,7 +72,7 @@ export const MovieForm = () => {
                     value={movieDetails.runtime}
                     onChange={(e) =>
                         setMovieDetails((old) => ({
-                            ...movieDetails,
+                            ...movieDetails, // spread operator allows us to put our new inputs to the front of the target.value column, giving us our new movieDetails runtime
                             runtime: parseInt(e.target.value),
                         }))
                     }

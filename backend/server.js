@@ -28,5 +28,13 @@ app.post("/", async (req, res) => {
 
 // gets our express app to listen for responses .
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(
+        `Example app listening on port what is this!? WE DID IT!? FOR REALZISES? ${port}`
+    );
+});
+
+app.get("/", (req, res) => {
+    res.send(
+        "HEY BRO! LOOK WHATS' UP NOW! GOOPY YEET STUFF HELLO IDIOT! LIT CUNT WASSUP MY FOOL"
+    );
 });
