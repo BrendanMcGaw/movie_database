@@ -26,15 +26,16 @@ export const MovieForm = () => {
         description: "",
         runtime: 0,
     });
-    console.log(movieDetails);
     return (
         <form
+            className="formContainer"
             onSubmit={(event) => {
+                console.log(movieDetails);
                 addMovies(movieDetails);
                 // event.preventDefault();
             }}
         >
-            <label>
+            <label className="inputContainer">
                 Title:{""}
                 <input
                     type="text"
@@ -48,10 +49,7 @@ export const MovieForm = () => {
                     }
                 />
             </label>
-            <main>
-                <p>Yes man!</p>
-            </main>
-            <label>
+            <label className="inputContainer">
                 Description:{" "}
                 <input
                     type="text"
@@ -65,7 +63,7 @@ export const MovieForm = () => {
                     }
                 />
             </label>
-            <label>
+            <label className="inputContainer">
                 Runtime:{" "}
                 <input
                     type="text"
@@ -78,7 +76,9 @@ export const MovieForm = () => {
                     }
                 />
             </label>
-            <button type="submit">Add Movie</button>
+            <button className="formButton" type="submit">
+                Add Movie
+            </button>
         </form>
     );
 };

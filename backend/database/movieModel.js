@@ -8,4 +8,9 @@ const addMovie = (title, description, runtime) => {
     });
 };
 
-module.exports = { addMovie };
+const getAllMovies = () => {
+    const rows = db("movies").select("*");
+    return rows;
+};
+
+module.exports = { addMovie, getAllMovies };

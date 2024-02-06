@@ -15,7 +15,7 @@ RUN npm install
 COPY . .
 
 # Expose the port the app runs onS
-EXPOSE 3001AAA
+EXPOSE 3001
 
 # Start the application
 CMD npm run migrate && npm run dev
