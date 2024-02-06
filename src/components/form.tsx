@@ -38,6 +38,7 @@ export const MovieForm = () => {
             <label className="inputContainer">
                 Title:{""}
                 <input
+                    required
                     type="text"
                     name="title"
                     value={movieDetails.title}
@@ -52,6 +53,7 @@ export const MovieForm = () => {
             <label className="inputContainer">
                 Description:{" "}
                 <input
+                    required
                     type="text"
                     name="description"
                     value={movieDetails.description}
@@ -66,6 +68,7 @@ export const MovieForm = () => {
             <label className="inputContainer">
                 Runtime:{" "}
                 <input
+                    required
                     type="text"
                     value={movieDetails.runtime}
                     onChange={(e) =>
