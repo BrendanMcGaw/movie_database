@@ -9,8 +9,19 @@ const addMovie = (title, description, runtime) => {
 };
 
 const getAllMovies = () => {
-    const rows = db("movies").select("*");
-    return rows;
+    return db("movies").select("*");
 };
 
-module.exports = { addMovie, getAllMovies };
+const updateMovie = (title, description, runtime, movieId) => {
+    return db("movies").where({ id: movieId }).update({
+        title: title,
+        description: description,
+        runtime: runtime,
+    });
+};
+
+const deleteMovie = (movieId) => {
+    return db("movies").where({ id: movieId }).del();
+};
+
+module.exports = { addMovie, getAllMovies, deleteMovie, updateMovie };

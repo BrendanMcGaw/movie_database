@@ -1,37 +1,53 @@
 import React, { useState } from "react";
+import { Movie, postMovies } from "../Requests/MoviePost";
+import { updateMovieFetch } from "../Requests/UpdateMovie";
 
-const addMovies = async (movieDetails: Movie) => {
-    // Prevents form from doing its default submission bullshit.
-
-    const response = await fetch("http://localhost:3001", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-            "Content-type": "application/json",
-        },
-        body: JSON.stringify(movieDetails),
-    });
-    return response.json();
+type MovieFormProps = {
+    updateMode: boolean;
+    movieId: number;
+    showAddMovie: boolean;
 };
 
-type Movie = {
-    title: string;
-    description: string;
-    runtime: number;
-};
-
-export const MovieForm = () => {
+export const MovieForm = ({
+    updateMode,
+    movieId,
+    showAddMovie,
+}: MovieFormProps) => {
     const [movieDetails, setMovieDetails] = useState<Movie>({
         title: "",
         description: "",
         runtime: 0,
     });
+
+    const handleClick = () => {
+        if (showAddMovie === true && updateMode === false) {
+            postMovies(movieDetails);
+            console.log(
+                "showAddMovie state is: ",
+                showAddMovie,
+                "updateMode state is: ",
+                updateMode
+            );
+        } else if (updateMode === true) {
+            updateMovieFetch(movieDetails, movieId);
+            console.log(
+                "showAddMovie state is: ",
+                showAddMovie,
+                "updateMode state is: ",
+                updateMode
+            );
+        }
+    };
+
     return (
         <form
             className="formContainer"
             onSubmit={(event) => {
-                console.log(movieDetails);
-                addMovies(movieDetails);
+                console.log(
+                    "The details for the movie to either update or add are: ",
+                    movieDetails
+                );
+                handleClick();
                 // event.preventDefault();
             }}
         >
@@ -42,10 +58,10 @@ export const MovieForm = () => {
                     type="text"
                     name="title"
                     value={movieDetails.title}
-                    onChange={(e) =>
+                    onChange={(event) =>
                         setMovieDetails((old) => ({
                             ...movieDetails,
-                            title: e.target.value,
+                            title: event.target.value,
                         }))
                     }
                 />
@@ -57,10 +73,10 @@ export const MovieForm = () => {
                     type="text"
                     name="description"
                     value={movieDetails.description}
-                    onChange={(e) =>
+                    onChange={(event) =>
                         setMovieDetails((old) => ({
                             ...movieDetails,
-                            description: e.target.value,
+                            description: event.target.value,
                         }))
                     }
                 />
@@ -71,16 +87,16 @@ export const MovieForm = () => {
                     required
                     type="text"
                     value={movieDetails.runtime}
-                    onChange={(e) =>
+                    onChange={(event) =>
                         setMovieDetails((old) => ({
                             ...movieDetails, // spread operator allows us to put our new inputs to the front of the target.value column, giving us our new movieDetails runtime
-                            runtime: parseInt(e.target.value),
+                            runtime: parseInt(event.target.value),
                         }))
                     }
                 />
             </label>
             <button className="formButton" type="submit">
-                Add Movie
+                Submit
             </button>
         </form>
     );

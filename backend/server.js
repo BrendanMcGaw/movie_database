@@ -1,5 +1,10 @@
 const express = require("express");
-const { addMovie, getAllMovies } = require("./database/movieModel.js");
+const {
+    addMovie,
+    getAllMovies,
+    updateMovie,
+    deleteMovie,
+} = require("./database/movieModel.js");
 const cors = require("cors");
 
 const app = express();
@@ -13,13 +18,12 @@ const port = 3001;
 //     res.send(movieDetails);
 // });
 
+// Posts the data provided from the inputs in the front-end to the database.
 app.post("/", async (req, res) => {
-    // Posts the data provided from the inputs in the front-end to the database.
     try {
         const { title, description, runtime } = req.body; // requests the body of text provided to the variables by the front end
         console.log(req.body); // logs the requested body information as an object.
         const result = await addMovie(title, description, runtime); // Uses the function from movieModel and assigns thet body of text to each variable to turn it into a movie object.
-
         res.status(201).json({ message: "Movie added succesfully", result }); // Sends the resulting movie object to the database.
     } catch (error) {
         // catches when there is an error and reports on that error in the log. Pretty handy.
@@ -29,7 +33,8 @@ app.post("/", async (req, res) => {
 });
 
 // Gets all the data from the movies table in the database.
-app.get("/", async (req, res) => {
+// The path provided is just a route setup for you to always get the correct method when using a fetch to do things.
+app.get("/movies/getMovies/", async (req, res) => {
     try {
         const movieData = await getAllMovies();
         app.post("../src/components/movieCard.tsx", async (req, res) => {});
@@ -39,6 +44,33 @@ app.get("/", async (req, res) => {
         throw error;
     }
 });
+
+app.put("/movies/updateMovies/:id", async (req, res) => {
+    try {
+        const movieId = req.params.id;
+        const { title, description, runtime } = req.body;
+        const result = await updateMovie(title, description, runtime, movieId);
+
+        res.status(200).json({
+            message: "You've now updated the movie",
+            result,
+        });
+    } catch (error) {
+        console.log("Could not update the movie", error);
+        throw error;
+    }
+});
+// When running addMovie Button receiving this catch error ^^
+
+app.delete("/movies/delete/:id", async (req, res) => {
+    const movieId = req.params.id;
+    const result = await deleteMovie(movieId);
+    res.status(200).json({
+        message: "You've succesfully deleted the movie",
+        result,
+    });
+});
+
 // gets our express app to listen for responses .
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);

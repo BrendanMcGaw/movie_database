@@ -26,8 +26,13 @@ input {
 
 .formContainer {
     display: flex;
+    position: fixed;
+    top: 0%;
+    left: 36.6%;
+    background-color: rgb(29, 29, 29);
     flex: 1;
     flex-direction: column;
+    z-index: 5;
     gap: 2rem;
     border: 5px solid rgb(151, 146, 146);
 }
@@ -72,4 +77,27 @@ input {
     to {
         transform: rotate(360deg);
     }
+}
+
+.addMovieButton {
+    background-color: #61dafb;
+    height: 100px;
+    width: 600px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: black;
+    box-shadow: -1px 2px 15px black;
+    margin-bottom: 35px;
+}
+
+.tableContainer {
+    display: flex;
+    flex: 1;
+    width: 80%;
+    justify-content: center;
+}
+
+td {
+    vertical-align: top;
+    border: 2px solid black;
 }
