@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MovieForm } from "./MovieForm";
+import { MovieForm } from "./MovieForm.tsx";
 
 export const DeleteMovie = (movieId: number) => {
     fetch(`http://localhost:3001/movies/delete/${movieId}`, {

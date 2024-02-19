@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Movie, postMovies } from "../Requests/MoviePost";
-import { updateMovieFetch } from "../Requests/UpdateMovie";
+import { Movie, postMovies } from "../Requests/MoviePost.tsx";
+import { updateMovieFetch } from "../Requests/UpdateMovie.tsx";
 
 type MovieFormProps = {
     updateMode: boolean;

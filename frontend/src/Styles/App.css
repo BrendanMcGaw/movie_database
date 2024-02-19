@@ -24,6 +24,7 @@ input {
     margin: 0;
 }
 
+/* Wanted the form container to pop up at the top of the screen and stay there until either submitted or closed. */
 .formContainer {
     display: flex;
     position: fixed;
@@ -79,6 +80,7 @@ input {
     }
 }
 
+/* Modified the add movie button to make it prettier and easier on the eyes. */
 .addMovieButton {
     background-color: #61dafb;
     height: 100px;
@@ -90,6 +92,7 @@ input {
     margin-bottom: 35px;
 }
 
+/* Allowed more control over the location of the table. */
 .tableContainer {
     display: flex;
     flex: 1;
@@ -97,6 +100,7 @@ input {
     justify-content: center;
 }
 
+/* Added a border to the table data for more readability. */
 td {
     vertical-align: top;
     border: 2px solid black;

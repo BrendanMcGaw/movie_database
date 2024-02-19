@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import logo from "./Assets/logo.svg";
 import "./Styles/App.css";
-import { MovieForm } from "./Components/MovieForm";
-import { MovieList } from "./Components/MovieList";
+import { MovieForm } from "./Components/MovieForm.tsx";
+import { MovieList } from "./Components/MovieList.tsx";
 // layout of overall page structure should be done here. Import components here.
 
 function App() {
