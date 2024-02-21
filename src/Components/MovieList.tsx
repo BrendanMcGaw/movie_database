@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MovieForm } from "./MovieForm";
+import { Card } from "./MovieCards";
+import image from "../Assets/WalkingTallImageFrom Omdb.jpg";
 
 export const DeleteMovie = (movieId: number) => {
     fetch(`http://localhost:3001/movies/delete/${movieId}`, {
@@ -33,19 +35,18 @@ export const MovieList = () => {
 
     // console.log(JSON.stringify(movies));
     return (
-        <div className="tableContainer">
-            <table>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Runtime</th>
-                </tr>
-                {movies.map((movie) => (
-                    <tr key={movie.id}>
-                        <td style={{ maxWidth: 350 }}>{movie.title}</td>
-                        <td style={{ maxWidth: 800 }}>{movie.description}</td>
-                        <td style={{ maxWidth: 200 }}>{movie.runtime}</td>
-                        <td>
+        <div className="pageContentContainer">
+            {movies.map((movie) => (
+                <div key={movie.id}>
+                    <Card>
+                        {/* TODO: Add OMDB functionality, to take the title input, correspond that with the image assosciated with the film and use that as the card image. */}
+                        <img src={image} alt={"The Rock carrying a 4 by 4."} />
+                        <h2>{movie.title}</h2>
+                        <p className="description">{movie.description}</p>
+                        <p className="runtime">
+                            Runtime: {movie.runtime} minutes
+                        </p>
+                        <footer className="cardButtonContainer">
                             <button
                                 className="updateButton"
                                 onClick={() =>
@@ -62,24 +63,16 @@ export const MovieList = () => {
                                     showAddMovie={false}
                                 />
                             ) : null}
-                            {/* Something was breaking with my assigning of truthys when I was attempting to choose between MovieForms == When updateMode was just
-                            <MovieForm
-                                    updateMode
-                                    movieId={movie.id}
-                                    showAddMovie={false}
-                                />
-                            Was broken, ask harry about why this was happening and how I could test for it in the future. Was it because updateMode always defaults to true and therefore was always true no matter what button i pressed? or was it defaulting somehow differently?
-                            Weird documentation. */}
                             <button
                                 className="deleteButton"
                                 onClick={() => DeleteMovie(movie.id)}
                             >
                                 Delete
                             </button>
-                        </td>
-                    </tr>
-                ))}
-            </table>
+                        </footer>
+                    </Card>
+                </div>
+            ))}
         </div>
     );
 };

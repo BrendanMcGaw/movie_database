@@ -1,3 +1,10 @@
+body {
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+/* Might want to change this font later. */
+
 .App {
     text-align: center;
 }
@@ -90,14 +97,9 @@ input {
     margin-bottom: 35px;
 }
 
-.tableContainer {
+.pageContentContainer {
     display: flex;
     flex: 1;
-    width: 80%;
+    width: 90%;
     justify-content: center;
-}
-
-td {
-    vertical-align: top;
-    border: 2px solid black;
 }

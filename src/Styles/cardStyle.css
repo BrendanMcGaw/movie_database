@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
+
+.pageContentContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+.cardContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    height: 650px;
+    width: 250px;
+    border: 2px solid orange;
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 0px;
+}
+
+.description {
+    font-size: 18px;
+    align-self: flex-start;
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+.runtime {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: lighter;
+    align-self: flex-end;
+    margin-top: 2px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+}
+
+.cardButtonContainer {
+    display: flex;
+    flex: 1;
+    /* justify-content: flex-end;
+    align-content: flex-end;
+    align-items: flex-end;
+    justify-items: flex-end; */
+    justify-content: flex-end;
+}
+
+img {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.updateButton,
+.deleteButton {
+    margin-left: 5px;
+    background-color: rgb(182, 61, 61);
+    height: 35px;
+    align-self: flex-end; /* Allows me to put my buttons at the end of the cardContainer */
+    width: 100px;
+    font-size: 14px;
+    color: black;
+    font-family: "DM Serif Text", serif;
+    font-weight: 600;
+    font-style: normal;
+}
