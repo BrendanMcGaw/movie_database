@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Movie, postMovies } from "../Requests/MoviePost";
 import { updateMovieFetch } from "../Requests/UpdateMovie";
 
@@ -6,6 +6,7 @@ type MovieFormProps = {
     updateMode: boolean;
     movieId: number;
     showAddMovie: boolean;
+    moviePoster: string;
 };
 
 export const MovieForm = ({
@@ -17,6 +18,8 @@ export const MovieForm = ({
         title: "",
         description: "",
         runtime: 0,
+        year: 0,
+        poster: "",
     });
 
     const handleClick = () => {
@@ -38,6 +41,31 @@ export const MovieForm = ({
             );
         }
     };
+
+    // SO CLOSE!!! able to get the moviePoster address of the item just don't know how to apply it to the image src in the movieList (something about being trash at passing states.)
+    // look into not using useEffect
+    useEffect(() => {
+        const fetchMoviePoster = async () => {
+            try {
+                // find a way to do 2 fetches. If the movieDetails.year doesn't == a true result then do the fetch for just the movie parameter.
+                console.log(movieDetails.title, movieDetails.year);
+                const response = await fetch(
+                    `http://www.omdbapi.com/?apikey=14cbc6df&t=${movieDetails.title}&y=${movieDetails.year}`
+                );
+                // Check result for title == true and year == true. Otherwise ignore year.
+                console.log(response);
+                const result = await response.json();
+                console.log("This is the original result: ", result);
+                movieDetails.poster = result.Poster; // Appends the poster result to the movieDetails state.
+            } catch (error) {
+                console.log("Error fetching data from omdb.", error);
+                movieDetails.poster = "Could not find movie."; // Add this as alt text or maybe a short plot for each film?
+            }
+        };
+        if (movieDetails.title && movieDetails.year) {
+            fetchMoviePoster();
+        }
+    });
 
     return (
         <form
@@ -95,7 +123,31 @@ export const MovieForm = ({
                     }
                 />
             </label>
-            <button className="formButton" type="submit">
+            <label className="inputContainer">
+                Year:{" "}
+                <input
+                    required
+                    type="text"
+                    value={movieDetails.year}
+                    onChange={(event) =>
+                        setMovieDetails((old) => ({
+                            ...movieDetails, // spread operator allows us to put our new inputs to the front of the target.value column, giving us our new movieDetails runtime
+                            year: parseInt(event.target.value),
+                        }))
+                    }
+                />
+            </label>
+            <button
+                className="formButton"
+                type="submit"
+                onClick={(event) => {
+                    console.log(movieDetails);
+                    setMovieDetails((old) => ({
+                        ...movieDetails,
+                        poster: movieDetails.poster,
+                    })); // Is being seen in the console log but not added to database.
+                }}
+            >
                 Submit
             </button>
         </form>

@@ -6,6 +6,7 @@ const {
     deleteMovie,
 } = require("./database/movieModel.js");
 const cors = require("cors");
+// const imdbData = require("../src/Requests/OmdbData.js");
 
 const app = express();
 app.use(express.json());
@@ -19,11 +20,24 @@ const port = 3001;
 // });
 
 // Posts the data provided from the inputs in the front-end to the database.
+
+// app.get("/"),
+//     async (req, res) => {
+//         try {
+//         } catch (error) {}
+//     };
+
 app.post("/", async (req, res) => {
     try {
-        const { title, description, runtime } = req.body; // requests the body of text provided to the variables by the front end
+        const { title, description, runtime, year, poster } = req.body; // requests the body of text provided to the variables by the front end
         console.log(req.body); // logs the requested body information as an object.
-        const result = await addMovie(title, description, runtime); // Uses the function from movieModel and assigns thet body of text to each variable to turn it into a movie object.
+        const result = await addMovie(
+            title,
+            description,
+            runtime,
+            year,
+            poster
+        ); // Uses the function from movieModel and assigns thet body of text to each variable to turn it into a movie object.
         res.status(201).json({ message: "Movie added succesfully", result }); // Sends the resulting movie object to the database.
     } catch (error) {
         // catches when there is an error and reports on that error in the log. Pretty handy.
@@ -48,8 +62,15 @@ app.get("/movies/getMovies/", async (req, res) => {
 app.put("/movies/updateMovies/:id", async (req, res) => {
     try {
         const movieId = req.params.id;
-        const { title, description, runtime } = req.body;
-        const result = await updateMovie(title, description, runtime, movieId);
+        const { title, description, runtime, year, poster } = req.body;
+        const result = await updateMovie(
+            title,
+            description,
+            runtime,
+            year,
+            poster,
+            movieId
+        );
 
         res.status(200).json({
             message: "You've now updated the movie",

@@ -16,4 +16,6 @@ export type Movie = {
     title: string;
     description: string;
     runtime: number;
+    year: number;
+    poster: string;
 };

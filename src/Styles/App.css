@@ -64,13 +64,25 @@ input {
 
 .App-header {
     background-color: #282c34;
-    min-height: 100vh;
+    min-height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    border: 5px 15px 15px orange;
+}
+
+main {
+    background-color: #3c424e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding-top: 25px;
 }
 
 .App-link {

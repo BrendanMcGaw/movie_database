@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MovieForm } from "./MovieForm";
 import { Card } from "./MovieCards";
-import image from "../Assets/WalkingTallImageFrom Omdb.jpg";
 
 export const DeleteMovie = (movieId: number) => {
     fetch(`http://localhost:3001/movies/delete/${movieId}`, {
@@ -15,6 +14,7 @@ export const DeleteMovie = (movieId: number) => {
 
 export const MovieList = () => {
     const [movies, setMovies] = useState<any[]>([]);
+    // Probably want to lift the state to the parent app so that each update button is independent of the others.
     const [showUpdateMovieForm, setShowUpdateMovieForm] = useState(false);
 
     useEffect(() => {
@@ -39,13 +39,18 @@ export const MovieList = () => {
             {movies.map((movie) => (
                 <div key={movie.id}>
                     <Card>
-                        {/* TODO: Add OMDB functionality, to take the title input, correspond that with the image assosciated with the film and use that as the card image. */}
-                        <img src={image} alt={"The Rock carrying a 4 by 4."} />
+                        <img
+                            className="moviePosters"
+                            src={movie.poster}
+                            alt={"Hero-Movie Poster"}
+                        />
                         <h2>{movie.title}</h2>
+                        <p className="year">{movie.year}</p>
                         <p className="description">{movie.description}</p>
                         <p className="runtime">
                             Runtime: {movie.runtime} minutes
                         </p>
+
                         <footer className="cardButtonContainer">
                             <button
                                 className="updateButton"
@@ -61,6 +66,7 @@ export const MovieList = () => {
                                     updateMode={true}
                                     movieId={movie.id}
                                     showAddMovie={false}
+                                    moviePoster=""
                                 />
                             ) : null}
                             <button
