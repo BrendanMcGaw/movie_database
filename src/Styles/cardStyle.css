@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
+
+.pageContentContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+
+.cardContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 650px;
+    max-height: 1500px;
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 12px;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 0px;
+    text-wrap: pretty;
+}
+
+.description {
+    font-size: 18px;
+    align-self: flex-start;
+    text-align: left;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.runtime {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: lighter;
+    align-self: flex-start;
+    margin-top: 2px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+}
+
+.year {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: lighter;
+    color: rgb(156, 156, 156);
+    margin: 0px;
+}
+
+.cardButtonContainer {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.moviePosters {
+    border-radius: 5px;
+    border: 5px solid white;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.updateButton,
+.deleteButton {
+    margin-left: 5px;
+    background-color: rgb(182, 61, 61);
+    height: 35px;
+    align-self: flex-end; /* Allows me to put my buttons at the end of the cardContainer */
+    width: 100px;
+    font-size: 14px;
+    color: black;
+    font-family: "DM Serif Text", serif;
+    font-weight: 600;
+    font-style: normal;
+}

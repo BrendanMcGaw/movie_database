@@ -8,13 +8,14 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install app dependencies
+RUN apt-get update
 RUN npm install
 
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Expose the port the app runs on
+# Expose the port the app runs onS
 EXPOSE 3001
 
 # Start the application
-CMD ["npm", "start", "dev"]
+CMD npm run migrate && npm run dev
