@@ -1,0 +1,17 @@
+.navbarContainer {
+    background-color: rgb(134, 130, 130);
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    column-gap: 50px;
+}
+
+nav {
+    font-size: 18px;
+}
+
+.dropdownMenu {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}

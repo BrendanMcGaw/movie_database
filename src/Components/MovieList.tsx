@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { MovieForm } from "./MovieForm";
 import { Card } from "./MovieCards";
-
-export const DeleteMovie = (movieId: number) => {
-    fetch(`http://localhost:3001/movies/delete/${movieId}`, {
-        method: "DELETE",
-        mode: "cors",
-        body: null,
-    });
-    console.log(movieId);
-    window.location.reload(); // Reloads current window to update the UI
-};
+import { DeleteMovie } from "../Requests/DeleteMovie";
 
 export const MovieList = () => {
     const [movies, setMovies] = useState<any[]>([]);
     // Probably want to lift the state to the parent app so that each update button is independent of the others.
     const [showUpdateMovieForm, setShowUpdateMovieForm] = useState(false);
+    const [showFullDescription, setShowFullDescription] = useState<{
+        [key: number]: boolean;
+    }>({}); // is to say that this is an object, where each key is a number, and each value is a boolean.
+
+    const showFullDescriptionHandler = (movieId: number) => {
+        setShowFullDescription((prevState) => ({
+            ...prevState,
+            [movieId]: !prevState[movieId],
+        }));
+        console.log(showFullDescription);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,9 +46,24 @@ export const MovieList = () => {
                             src={movie.poster}
                             alt={"Hero-Movie Poster"}
                         />
-                        <h2>{movie.title}</h2>
                         <p className="year">{movie.year}</p>
-                        <p className="description">{movie.description}</p>
+                        <p className="description">
+                            {showFullDescription[movie.id]
+                                ? movie.description
+                                : movie.description.slice(0, 100)}
+                        </p>
+                        <button
+                            className="readMoreButton"
+                            onClick={() => {
+                                showFullDescriptionHandler(movie.id);
+                            }}
+                        >
+                            {showFullDescription[movie.id]
+                                ? "Read Less"
+                                : "Read More"}
+                        </button>
+                        {/* TODO: Basic read more implementation. Needs to look cleaner and change from Read More to Read Less to shrink. 
+                        Should also be state lifted in order to individualize each read more button so that it doesn't expand them all at once. */}
                         <p className="runtime">
                             Runtime: {movie.runtime} minutes
                         </p>
