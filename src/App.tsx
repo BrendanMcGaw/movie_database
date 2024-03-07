@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import logo from "./Assets/logo.svg";
 import "./Styles/App.css";
 import { MovieForm } from "./Components/MovieForm";
 import { MovieList } from "./Components/MovieList";
 import { Navbar } from "./Components/Navbar";
+import { Route, Routes } from "react-router-dom";
+import { MoviePage } from "./Components/MoviePage";
 // layout of overall page structure should be done here. Import components here.
 
 function App() {
@@ -30,7 +31,10 @@ function App() {
                     />
                 ) : null}
                 {/* if showAddMovie is true, render the movieForm. */}
-                <MovieList />
+                <Routes>
+                    <Route path="/" element={<MovieList />} />
+                    <Route path="/movie/:movieId" element={<MoviePage />} />
+                </Routes>
             </main>
         </div>
     );

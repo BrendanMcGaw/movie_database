@@ -42,8 +42,6 @@ export const MovieForm = ({
         }
     };
 
-    // SO CLOSE!!! able to get the moviePoster address of the item just don't know how to apply it to the image src in the movieList (something about being trash at passing states.)
-    // look into not using useEffect
     useEffect(() => {
         const fetchMoviePoster = async () => {
             try {
@@ -53,10 +51,30 @@ export const MovieForm = ({
                     `http://www.omdbapi.com/?apikey=14cbc6df&t=${movieDetails.title}&y=${movieDetails.year}`
                 );
                 // Check result for title == true and year == true. Otherwise ignore year.
-                console.log(response);
+                console.log(
+                    "This is the result of fetching title and year:",
+                    response
+                );
                 const result = await response.json();
-                console.log("This is the original result: ", result);
-                movieDetails.poster = result.Poster; // Appends the poster result to the movieDetails state.
+                console.log(
+                    "This is the result of fetching title and year: ",
+                    result
+                );
+                movieDetails.poster = result.Poster; // If title and year are accurate, this will get the correct poster dependent on the year of release.
+                if (
+                    result.Response === "False" &&
+                    result.Error === "Movie not found!"
+                ) {
+                    const response = await fetch(
+                        `http://www.omdbapi.com/?apikey=14cbc6df&t=${movieDetails.title}`
+                    );
+                    const result = await response.json();
+                    console.log(
+                        "This is the result of fetching the title only:",
+                        result
+                    );
+                    movieDetails.poster = result.Poster; // If only the title is correct, it will still grab the default poster for the movie title listed.
+                }
             } catch (error) {
                 console.log("Error fetching data from omdb.", error);
                 movieDetails.poster = "Could not find movie."; // Add this as alt text or maybe a short plot for each film?

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MovieForm } from "./MovieForm";
 import { Card } from "./MovieCards";
 import { DeleteMovie } from "../Requests/DeleteMovie";
+import { Link } from "react-router-dom";
 
 export const MovieList = () => {
     const [movies, setMovies] = useState<any[]>([]);
@@ -46,7 +47,9 @@ export const MovieList = () => {
                             src={movie.poster}
                             alt={"Hero-Movie Poster"}
                         />
-                        <p className="year">{movie.year}</p>
+                        <Link to={`/movie/${movie.id}`} className="year">
+                            {movie.year}
+                        </Link>
                         <p className="description">
                             {showFullDescription[movie.id]
                                 ? movie.description
