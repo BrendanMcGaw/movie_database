@@ -82,7 +82,7 @@ export const MovieForm = ({
                 movieDetails.poster = "Could not find movie."; // Add this as alt text or maybe a short plot for each film?
             }
         };
-        if (movieDetails.title && movieDetails.year) {
+        if (movieDetails.title) {
             fetchMoviePoster();
         }
     });
@@ -117,7 +117,6 @@ export const MovieForm = ({
             <label className="inputContainer">
                 Description:{" "}
                 <input
-                    required
                     type="text"
                     name="description"
                     value={movieDetails.description}
@@ -132,7 +131,6 @@ export const MovieForm = ({
             <label className="inputContainer">
                 Runtime:{" "}
                 <input
-                    required
                     type="text"
                     value={movieDetails.runtime}
                     onChange={(event) =>
@@ -146,7 +144,6 @@ export const MovieForm = ({
             <label className="inputContainer">
                 Year:{" "}
                 <input
-                    required
                     type="text"
                     value={movieDetails.year}
                     onChange={(event) =>

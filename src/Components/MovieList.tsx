@@ -8,10 +8,10 @@ export const MovieList = () => {
     const [movies, setMovies] = useState<any[]>([]);
     // Probably want to lift the state to the parent app so that each update button is independent of the others.
     const [showUpdateMovieForm, setShowUpdateMovieForm] = useState<{
-        [key: number]: boolean;
+        [id: number]: boolean;
     }>({});
     const [showFullDescription, setShowFullDescription] = useState<{
-        [key: number]: boolean;
+        [id: number]: boolean;
     }>({}); // is to say that this is an object, where each key is a number, and each value is a boolean.
 
     const showFullDescriptionHandler = (movieId: number) => {

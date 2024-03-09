@@ -12,7 +12,6 @@ app.use(express.json());
 app.use(cors({ origin: true }));
 const port = process.env.PORT;
 
-console.log("This is your dotenv shit", dotenv); // when in doubt, log it out.
 app.post("/", async (req, res) => {
     try {
         const { title, description, runtime, year, poster } = req.body; // requests the body of text provided to the variables by the front end
