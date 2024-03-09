@@ -36,6 +36,8 @@ export const MovieForm = ({
             console.log(
                 "showAddMovie state is: ",
                 showAddMovie,
+                "The movieId is:",
+                movieId, // movieId is straight wrong. TODO: Figure it out.
                 "updateMode state is: ",
                 updateMode
             );

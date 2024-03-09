@@ -6,7 +6,6 @@ import { Navbar } from "./Components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import { MoviePage } from "./Components/MoviePage";
 // layout of overall page structure should be done here. Import components here.
-
 function App() {
     const [showAddMovie, setShowAddMovie] = useState(false);
 

@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 export const MovieList = () => {
     const [movies, setMovies] = useState<any[]>([]);
     // Probably want to lift the state to the parent app so that each update button is independent of the others.
-    const [showUpdateMovieForm, setShowUpdateMovieForm] = useState(false);
+    const [showUpdateMovieForm, setShowUpdateMovieForm] = useState<{
+        [key: number]: boolean;
+    }>({});
     const [showFullDescription, setShowFullDescription] = useState<{
         [key: number]: boolean;
     }>({}); // is to say that this is an object, where each key is a number, and each value is a boolean.
@@ -18,6 +20,13 @@ export const MovieList = () => {
             [movieId]: !prevState[movieId],
         }));
         console.log(showFullDescription);
+    };
+
+    const toggleUpdateForm = (movieId: number) => {
+        setShowUpdateMovieForm((prevState) => ({
+            ...prevState,
+            [movieId]: !prevState[movieId],
+        }));
     };
 
     useEffect(() => {
@@ -74,17 +83,20 @@ export const MovieList = () => {
                         <footer className="cardButtonContainer">
                             <button
                                 className="updateButton"
-                                onClick={() =>
-                                    setShowUpdateMovieForm(!showUpdateMovieForm)
-                                }
+                                onClick={() => {
+                                    toggleUpdateForm(movie.id);
+                                    console.log(movie.id); // is logging which movie.id we're clicking on, but TODO: Not updating the correct one assosciated with the movie.id
+                                }}
                             >
-                                {showUpdateMovieForm ? "Hide " : "Show "}
+                                {showUpdateMovieForm[movie.id]
+                                    ? "Hide "
+                                    : "Show "}
                                 Update
                             </button>
-                            {showUpdateMovieForm ? (
+                            {showUpdateMovieForm[movie.id] ? (
                                 <MovieForm
                                     updateMode={true}
-                                    movieId={movie.id}
+                                    movieId={movie.id} // this is not passing correctly?
                                     showAddMovie={false}
                                     moviePoster=""
                                 />

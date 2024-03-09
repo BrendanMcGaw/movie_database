@@ -1,32 +1,18 @@
 const express = require("express");
+const app = express();
+const dotenv = require("dotenv").config(); // Had to move my .env file into my backend directory. Fuck me.
+const cors = require("cors"); // required for backend environment variables.
 const {
     addMovie,
     getAllMovies,
     updateMovie,
     deleteMovie,
 } = require("./database/movieModel.js");
-const cors = require("cors");
-// const imdbData = require("../src/Requests/OmdbData.js");
-
-const app = express();
 app.use(express.json());
 app.use(cors({ origin: true }));
-const port = 3001;
-// our exposes port on our local network.
+const port = process.env.PORT;
 
-// https://en.wikipedia.org/wiki/HTTP#Request_methods
-// app.get("/", async (req, res) => {
-//     res.send(movieDetails);
-// });
-
-// Posts the data provided from the inputs in the front-end to the database.
-
-// app.get("/"),
-//     async (req, res) => {
-//         try {
-//         } catch (error) {}
-//     };
-
+console.log("This is your dotenv shit", dotenv); // when in doubt, log it out.
 app.post("/", async (req, res) => {
     try {
         const { title, description, runtime, year, poster } = req.body; // requests the body of text provided to the variables by the front end
