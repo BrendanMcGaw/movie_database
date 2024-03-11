@@ -3,6 +3,7 @@ import "../Styles/cardStyle.css";
 import { Link } from "react-router-dom";
 import { MovieForm } from "./MovieForm";
 import { DeleteMovie } from "../Requests/DeleteMovie";
+import { useFetchMoviePoster } from "../Hooks/useFetchMoviePoster";
 
 type MovieCardProps = {
     movie: {
@@ -26,11 +27,12 @@ export const MovieCard: React.FC<MovieCardProps> = ({
     showUpdateMovieForm,
     showFullDescription,
 }) => {
+    const poster = useFetchMoviePoster(movie);
     return (
         <div key={movie.id}>
             <img
                 className="moviePosters"
-                src={movie.poster}
+                src={poster}
                 alt={"Hero-Movie Poster"}
             />
             <Link to={`/movie/${movie.id}`} className="year">
@@ -67,7 +69,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                 {showUpdateMovieForm[movie.id] ? (
                     <MovieForm
                         updateMode={true}
-                        movieId={movie.id} // this is not passing correctly?
+                        movieId={movie.id}
                         showAddMovie={false}
                         moviePoster=""
                     />

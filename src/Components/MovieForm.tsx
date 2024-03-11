@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Movie, postMovies } from "../Requests/MoviePost";
 import { updateMovieFetch } from "../Requests/UpdateMovie";
 
@@ -43,49 +43,6 @@ export const MovieForm = ({
             );
         }
     };
-
-    useEffect(() => {
-        const fetchMoviePoster = async () => {
-            try {
-                // find a way to do 2 fetches. If the movieDetails.year doesn't == a true result then do the fetch for just the movie parameter.
-                console.log(movieDetails.title, movieDetails.year);
-                const response = await fetch(
-                    `http://www.omdbapi.com/?apikey=14cbc6df&t=${movieDetails.title}&y=${movieDetails.year}`
-                );
-                // Check result for title == true and year == true. Otherwise ignore year.
-                console.log(
-                    "This is the result of fetching title and year:",
-                    response
-                );
-                const result = await response.json();
-                console.log(
-                    "This is the result of fetching title and year: ",
-                    result
-                );
-                movieDetails.poster = result.Poster; // If title and year are accurate, this will get the correct poster dependent on the year of release.
-                if (
-                    result.Response === "False" &&
-                    result.Error === "Movie not found!"
-                ) {
-                    const response = await fetch(
-                        `http://www.omdbapi.com/?apikey=14cbc6df&t=${movieDetails.title}`
-                    );
-                    const result = await response.json();
-                    console.log(
-                        "This is the result of fetching the title only:",
-                        result
-                    );
-                    movieDetails.poster = result.Poster; // If only the title is correct, it will still grab the default poster for the movie title listed.
-                }
-            } catch (error) {
-                console.log("Error fetching data from omdb.", error);
-                movieDetails.poster = "Could not find movie."; // Add this as alt text or maybe a short plot for each film?
-            }
-        };
-        if (movieDetails.title) {
-            fetchMoviePoster();
-        }
-    });
 
     return (
         <form

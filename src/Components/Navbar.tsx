@@ -2,7 +2,6 @@ import React from "react";
 import "../Styles/navbar.css";
 import { DropdownButton } from "react-bootstrap";
 import { Dropdown } from "react-bootstrap";
-import Popper from "popper.js";
 
 //TODO: Create dynamic pages for each item in the table when clicked on open page with x components that look dope.
 //TODO: ADD USERS AND REVIEWS
