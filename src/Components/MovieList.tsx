@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MovieForm } from "./MovieForm";
-import { Card } from "./MovieCards";
-import { DeleteMovie } from "../Requests/DeleteMovie";
-import { Link } from "react-router-dom";
+import { MovieCard } from "./MovieCard";
 
 export const MovieList = () => {
     const [movies, setMovies] = useState<any[]>([]);
@@ -49,67 +46,14 @@ export const MovieList = () => {
     return (
         <div className="pageContentContainer">
             {movies.map((movie) => (
-                <div key={movie.id}>
-                    <Card>
-                        <img
-                            className="moviePosters"
-                            src={movie.poster}
-                            alt={"Hero-Movie Poster"}
-                        />
-                        <Link to={`/movie/${movie.id}`} className="year">
-                            {movie.year}
-                        </Link>
-                        <p className="description">
-                            {showFullDescription[movie.id]
-                                ? movie.description
-                                : movie.description.slice(0, 100)}
-                        </p>
-                        <button
-                            className="readMoreButton"
-                            onClick={() => {
-                                showFullDescriptionHandler(movie.id);
-                            }}
-                        >
-                            {showFullDescription[movie.id]
-                                ? "Read Less"
-                                : "Read More"}
-                        </button>
-                        {/* TODO: Basic read more implementation. Needs to look cleaner and change from Read More to Read Less to shrink. 
-                        Should also be state lifted in order to individualize each read more button so that it doesn't expand them all at once. */}
-                        <p className="runtime">
-                            Runtime: {movie.runtime} minutes
-                        </p>
-
-                        <footer className="cardButtonContainer">
-                            <button
-                                className="updateButton"
-                                onClick={() => {
-                                    toggleUpdateForm(movie.id);
-                                    console.log(movie.id); // is logging which movie.id we're clicking on, but TODO: Not updating the correct one assosciated with the movie.id
-                                }}
-                            >
-                                {showUpdateMovieForm[movie.id]
-                                    ? "Hide "
-                                    : "Show "}
-                                Update
-                            </button>
-                            {showUpdateMovieForm[movie.id] ? (
-                                <MovieForm
-                                    updateMode={true}
-                                    movieId={movie.id} // this is not passing correctly?
-                                    showAddMovie={false}
-                                    moviePoster=""
-                                />
-                            ) : null}
-                            <button
-                                className="deleteButton"
-                                onClick={() => DeleteMovie(movie.id)}
-                            >
-                                Delete
-                            </button>
-                        </footer>
-                    </Card>
-                </div>
+                <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                    showFullDescriptionHandler={showFullDescriptionHandler}
+                    toggleUpdateForm={toggleUpdateForm}
+                    showUpdateMovieForm={showUpdateMovieForm}
+                    showFullDescription={showFullDescription}
+                />
             ))}
         </div>
     );
