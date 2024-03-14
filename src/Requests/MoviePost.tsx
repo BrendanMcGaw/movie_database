@@ -17,5 +17,5 @@ export type Movie = {
     description: string;
     runtime: number;
     year: number;
-    poster: string;
+    poster: string | undefined;
 };

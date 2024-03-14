@@ -5,7 +5,7 @@ import { MovieForm } from "./MovieForm";
 import { DeleteMovie } from "../Requests/DeleteMovie";
 import { useFetchMoviePoster } from "../Hooks/useFetchMoviePoster";
 
-type MovieCardProps = {
+export type MovieCardProps = {
     movie: {
         id: number;
         title: string;
@@ -27,17 +27,18 @@ export const MovieCard: React.FC<MovieCardProps> = ({
     showUpdateMovieForm,
     showFullDescription,
 }) => {
-    const poster = useFetchMoviePoster(movie);
     return (
-        <div key={movie.id}>
+        <div key={movie.id} className="cardContainer">
             <img
                 className="moviePosters"
-                src={poster}
+                src={movie.poster}
                 alt={"Hero-Movie Poster"}
             />
-            <Link to={`/movie/${movie.id}`} className="year">
-                {movie.year}
-            </Link>
+            <div className="year">
+                <Link to={`/movie/${movie.id}`} className="year">
+                    {movie.year}
+                </Link>
+            </div>
             <p className="description">
                 {showFullDescription[movie.id]
                     ? movie.description

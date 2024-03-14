@@ -3,11 +3,12 @@
     display: flex;
     flex: 1;
     flex-direction: row;
-    column-gap: 50px;
+    justify-content: space-around;
+    column-gap: 100px;
 }
 
 nav {
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .dropdownMenu {

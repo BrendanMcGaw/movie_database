@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Movie, postMovies } from "../Requests/MoviePost";
 import { updateMovieFetch } from "../Requests/UpdateMovie";
+import { useFetchMoviePoster } from "../Hooks/useFetchMoviePoster";
 
 type MovieFormProps = {
     updateMode: boolean;
@@ -43,7 +44,7 @@ export const MovieForm = ({
             );
         }
     };
-
+    movieDetails.poster = useFetchMoviePoster(movieDetails);
     return (
         <form
             className="formContainer"
@@ -111,17 +112,7 @@ export const MovieForm = ({
                     }
                 />
             </label>
-            <button
-                className="formButton"
-                type="submit"
-                onClick={(event) => {
-                    console.log(movieDetails);
-                    setMovieDetails((old) => ({
-                        ...movieDetails,
-                        poster: movieDetails.poster,
-                    })); // Is being seen in the console log but not added to database.
-                }}
-            >
+            <button className="formButton" type="submit">
                 Submit
             </button>
         </form>

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 type MovieDetails = {
     title: string;
     year: number;
-    poster: string;
+    poster: string | undefined;
 };
 // Rendering numerous times, because i'm rendering it in the movieList. When I should be only using it once in my MovieForm when I submit the movie. Then it should stay in our table.
 // CSS is fucked atm. Hoping to fix that with the fixing of my fetch issue.
@@ -57,3 +57,6 @@ export const useFetchMoviePoster = (movieDetails: MovieDetails) => {
 
     return poster;
 };
+
+// Potentially transition APIs to this one instead.
+// https://developer.themoviedb.org/docs/getting-started
