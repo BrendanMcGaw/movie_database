@@ -47,7 +47,7 @@ export const MovieList = () => {
         <div className="pageContentContainer">
             {movies.map((movie) => (
                 <MovieCard
-                    key={movie.id}
+                    key={movie.id} // passing key means I probably don't need to use movie.id in my actual MovieCard. Reassess wasted resources.
                     movie={movie}
                     showFullDescriptionHandler={showFullDescriptionHandler}
                     toggleUpdateForm={toggleUpdateForm}
