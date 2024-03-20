@@ -7,7 +7,9 @@ const {
     getAllMovies,
     updateMovie,
     deleteMovie,
+    getSpecificMovie,
 } = require("./database/movieModel.js");
+
 app.use(express.json());
 app.use(cors({ origin: true }));
 const port = process.env.PORT;
@@ -40,6 +42,18 @@ app.get("/movies/getMovies/", async (req, res) => {
         res.status(201).json(movieData);
     } catch (error) {
         console.log("Could not find movies", error);
+        throw error;
+    }
+});
+
+app.get("/movies/getMovie/:id", async (req, res) => {
+    console.log("is this part even TRYNG?!");
+    try {
+        const movieData = await getSpecificMovie();
+        app.post("../src/components/MoviePage.tsx", async (req, res) => {});
+        res.status(201).json(movieData);
+    } catch (error) {
+        console.log("Could not find movie", error);
         throw error;
     }
 });

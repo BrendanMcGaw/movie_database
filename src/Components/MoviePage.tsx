@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export const MoviePage = () => {
+    const { id } = useParams();
     const [movie, setMovie] = useState<any[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                console.log("LETS FETCH!!");
+                // Getting TypeError failed to fetch.
                 const response = await fetch(
-                    "http://localhost:3001/movies/getMovies/"
+                    `http://localhost:3001/movies/${id}`
                 );
                 const data = await response.json();
                 setMovie(data);
@@ -17,7 +21,7 @@ export const MoviePage = () => {
         };
 
         fetchData();
-    }, []);
+    }, [id]);
 
     return (
         <div>
