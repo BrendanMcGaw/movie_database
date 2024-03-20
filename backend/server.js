@@ -46,7 +46,8 @@ app.get("/movies/getMovies/", async (req, res) => {
     }
 });
 
-app.get("/movies/getMovie/:id", async (req, res) => {
+//TODO: Is this now the problem?
+app.get("/movies/:id", async (req, res) => {
     console.log("is this part even TRYNG?!");
     try {
         const movieData = await getSpecificMovie();
