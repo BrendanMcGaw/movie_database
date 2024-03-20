@@ -9,22 +9,14 @@ import { GiAnimalSkull } from "react-icons/gi";
 export const Navbar = () => {
     return (
         <div className="navbarContainer">
-            <header className="navbarContainer">
-                <nav>
-                    <GiAnimalSkull />
-                </nav>
-                <nav>Movies Database</nav>
-                <DropdownButton
-                    title="Users"
-                    align="start"
-                    className="dropdownMenu"
-                >
-                    <Dropdown.Item eventKey="1">Profile</Dropdown.Item>
-                    <Dropdown.Item eventKey="2">Favourites</Dropdown.Item>
-                    <Dropdown.Item eventKey="3">Settings</Dropdown.Item>
-                </DropdownButton>
-                <nav>Dark / Light modes</nav>
-            </header>
+            <nav className="pageTitle">Picture Pulse</nav>
+            <nav className="navbarItem"></nav>
+            <nav className="navbarItem">Home</nav>
+            <nav className="navbarItem">Movies</nav>
+            <nav className="navbarItem">Genres</nav>
+            <nav className="navbarItem">Actors</nav>
+            <nav className="navbarItem">Directors</nav>
+            <nav className="navbarItem">Profile</nav>
         </div>
     );
 };

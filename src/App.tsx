@@ -17,7 +17,7 @@ function App() {
                     className="addMovieButton"
                     onClick={() => setShowAddMovie(!showAddMovie)}
                 >
-                    {showAddMovie ? "Hide " : "Show "} Add Movie
+                    {showAddMovie ? "" : ""} Add Movie
                 </button>
             </header>
             <main>

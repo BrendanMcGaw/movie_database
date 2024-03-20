@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { MovieForm } from "./MovieForm";
 import { DeleteMovie } from "../Requests/DeleteMovie";
 import { useFetchMoviePoster } from "../Hooks/useFetchMoviePoster";
+import { MoviePage } from "./MoviePage";
 
 export type MovieCardProps = {
     movie: {
