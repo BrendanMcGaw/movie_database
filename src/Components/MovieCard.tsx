@@ -20,7 +20,7 @@ export type MovieCardProps = {
     showUpdateMovieForm: { [id: number]: boolean };
     showFullDescription: { [id: number]: boolean };
 };
-
+// key is also a property that has been passed. movie.id unnecessary.
 export const MovieCard: React.FC<MovieCardProps> = ({
     movie,
     showFullDescriptionHandler,
@@ -34,6 +34,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                 className="moviePosters"
                 src={movie.poster}
                 alt={"Hero-Movie Poster"}
+                // something to do with adding a Link / React-route to my moviePage and pass all properties to it. Drill Prop style.
             />
             <div className="year">
                 <Link to={`/movie/${movie.id}`} className="year">

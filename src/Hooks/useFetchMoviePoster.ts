@@ -11,7 +11,7 @@ export const useFetchMoviePoster = (movieDetails: MovieDetails) => {
     const [poster, setPoster] = useState<string | undefined>(
         movieDetails.poster
     );
-
+// Change this from unreliable omdb to tmdb api, much more reliable, properly proportioned posters. More accurate information and regularly up to date.
     useEffect(() => {
         const fetchMoviePoster = async () => {
             try {
