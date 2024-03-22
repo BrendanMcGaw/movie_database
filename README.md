@@ -4,7 +4,7 @@ The goal of this project is to create a full stack web application that allows u
 This full stack web application was made in order to learn the fundamentals of backend, frontend and database.
 
 Current front-end example. 
-![Current sample of web app](https://github.com/BrendanMcGaw/movie_database/assets/46087405/aeda3241-7862-46b0-88bf-4c02daf598b5)
+![Screenshot 2024-03-21 001500 website](https://github.com/BrendanMcGaw/movie_database/assets/46087405/4b61b3ef-32d4-45a1-aa74-15ca769b0537)
 **Still under development**
 
 Working on this project has allowed me to touch on Node, Express, PostgresSQL, Docker, Knex Query Builder, React, JavaScript, TypeScript and CSS. 
@@ -26,3 +26,4 @@ Will work towards live implementation.
 With docker installed you should be able to run
 ### `docker-compose up --build` 
 in order to build the backend and database in docker, from there you can start adding movies to the database.
+
