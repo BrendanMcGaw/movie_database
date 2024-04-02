@@ -4,8 +4,11 @@ The goal of this project is to create a full stack web application that allows u
 This full stack web application was made in order to learn the fundamentals of backend, frontend and database.
 
 Current front-end example. 
+![image](https://github.com/BrendanMcGaw/movie_database/assets/46087405/339925c8-fe39-49d2-93ac-f96eb93fa644)
 ![Screenshot 2024-03-21 001500 website](https://github.com/BrendanMcGaw/movie_database/assets/46087405/4b61b3ef-32d4-45a1-aa74-15ca769b0537)
 **Still under development**
+
+
 
 Working on this project has allowed me to touch on Node, Express, PostgresSQL, Docker, Knex Query Builder, React, JavaScript, TypeScript and CSS. 
 Giving me a brief view of a full stack development ennvironment.
