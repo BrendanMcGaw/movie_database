@@ -14,8 +14,8 @@ const getAllMovies = () => {
     return db("movies").select("*");
 };
 
-const getSpecificMovie = (id) => {
-    return db("movies").where(id);
+const getSpecificMovie = ({ id }) => {
+    return db("movies").where({ id }).select("*");
 };
 
 const updateMovie = (title, description, runtime, year, poster, movieId) => {

@@ -20,6 +20,12 @@
     border-radius: 12px;
 }
 
+.imgLink {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
 h2 {
     font-size: 30px;
     margin: 0px;

@@ -28,17 +28,15 @@ export const MovieCard: React.FC<MovieCardProps> = ({
 }) => {
     return (
         <div key={movie.id} className="cardContainer">
-            <img
-                className="moviePosters"
-                src={movie.poster}
-                alt={"Hero-Movie Poster"}
-                // something to do with adding a Link / React-route to my moviePage and pass all properties to it. Drill Prop style.
-            />
-            <div className="year">
-                <Link to={`/movie/${movie.id}`} className="year">
-                    {movie.year}
-                </Link>
-            </div>
+            {/* Makes poster image clickable to route to individual moviePage */}
+            <Link to={`/movie/${movie.id}`} className="imgLink">
+                <img
+                    className="moviePosters"
+                    src={movie.poster}
+                    alt={"Hero-Movie Poster"}
+                />
+            </Link>
+            <div className="year">{movie.year}</div>
             <p className="description">
                 {showFullDescription[movie.id]
                     ? movie.description
@@ -52,8 +50,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
             >
                 {showFullDescription[movie.id] ? "Read Less" : "Read More"}
             </button>
-            {/* TODO: Basic read more implementation. Needs to look cleaner and change from Read More to Read Less to shrink. 
-        Should also be state lifted in order to individualize each read more button so that it doesn't expand them all at once. */}
+
             <p className="runtime">Runtime: {movie.runtime} minutes</p>
 
             <footer className="cardButtonContainer">
@@ -61,7 +58,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                     className="updateButton"
                     onClick={() => {
                         toggleUpdateForm(movie.id);
-                        console.log(movie.id); // is logging which movie.id we're clicking on, but TODO: Not updating the correct one assosciated with the movie.id
+                        console.log(movie.id);
                     }}
                 >
                     {showUpdateMovieForm[movie.id] ? "Hide " : "Show "}

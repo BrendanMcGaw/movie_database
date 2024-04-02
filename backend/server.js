@@ -47,12 +47,14 @@ app.get("/movies/getMovies/", async (req, res) => {
 });
 
 //TODO: Is this now the problem?
-app.get("/movies/:id", async (req, res) => {
+app.get("/movies/getMovies/:id", async (req, res) => {
+    const movieId = req.params.id;
     console.log("is this part even TRYNG?!");
+
     try {
-        const movieData = await getSpecificMovie();
-        app.post("../src/components/MoviePage.tsx", async (req, res) => {});
+        const movieData = await getSpecificMovie({ id: movieId });
         res.status(201).json(movieData);
+        console.log(movieData);
     } catch (error) {
         console.log("Could not find movie", error);
         throw error;

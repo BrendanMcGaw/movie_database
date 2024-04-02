@@ -11,7 +11,7 @@ export const MoviePage = () => {
                 console.log("LETS FETCH!!");
                 // Getting TypeError failed to fetch.
                 const response = await fetch(
-                    `http://localhost:3001/movies/${id}`
+                    `http://localhost:3001/movies/getMovies/${id}`
                 );
                 const data = await response.json();
                 setMovie(data);
