@@ -47,8 +47,12 @@ app.get("/movies/getMovies/", async (req, res) => {
 });
 
 //TODO: Is this now the problem?
+<<<<<<< HEAD
 app.get("/movies/getMovies/:id", async (req, res) => {
     const movieId = req.params.id;
+=======
+app.get("/movies/getMovie/:id", async (req, res) => {
+>>>>>>> 9990532efdef3d321af1e3de080c23f3e14c0a69
     console.log("is this part even TRYNG?!");
 
     try {
