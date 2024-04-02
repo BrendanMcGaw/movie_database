@@ -1,4 +1,5 @@
 // basically our connection string for our query builder knex to the postgres database image hosted on docker.
+// TODO: Set the rest of these details in .env file
 module.exports = {
     development: {
         client: "pg",
@@ -7,7 +8,7 @@ module.exports = {
             database: "postgres",
             user: "postgres",
             password: "password",
-            port: 5432,
+            port: process.env.KNEX_PORT,
         },
         pool: {
             min: 1,

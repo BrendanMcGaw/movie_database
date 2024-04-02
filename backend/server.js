@@ -1,31 +1,18 @@
 const express = require("express");
+const app = express();
+const dotenv = require("dotenv").config(); // Had to move my .env file into my backend directory. Fuck me.
+const cors = require("cors"); // required for backend environment variables.
 const {
     addMovie,
     getAllMovies,
     updateMovie,
     deleteMovie,
+    getSpecificMovie,
 } = require("./database/movieModel.js");
-const cors = require("cors");
-// const imdbData = require("../src/Requests/OmdbData.js");
 
-const app = express();
 app.use(express.json());
 app.use(cors({ origin: true }));
-const port = 3001;
-// our exposes port on our local network.
-
-// https://en.wikipedia.org/wiki/HTTP#Request_methods
-// app.get("/", async (req, res) => {
-//     res.send(movieDetails);
-// });
-
-// Posts the data provided from the inputs in the front-end to the database.
-
-// app.get("/"),
-//     async (req, res) => {
-//         try {
-//         } catch (error) {}
-//     };
+const port = process.env.PORT;
 
 app.post("/", async (req, res) => {
     try {
@@ -55,6 +42,19 @@ app.get("/movies/getMovies/", async (req, res) => {
         res.status(201).json(movieData);
     } catch (error) {
         console.log("Could not find movies", error);
+        throw error;
+    }
+});
+
+//TODO: Is this now the problem?
+app.get("/movies/getMovie/:id", async (req, res) => {
+    console.log("is this part even TRYNG?!");
+    try {
+        const movieData = await getSpecificMovie();
+        app.post("../src/components/MoviePage.tsx", async (req, res) => {});
+        res.status(201).json(movieData);
+    } catch (error) {
+        console.log("Could not find movie", error);
         throw error;
     }
 });

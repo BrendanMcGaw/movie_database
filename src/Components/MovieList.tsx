@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { MovieForm } from "./MovieForm";
-import { Card } from "./MovieCards";
-
-export const DeleteMovie = (movieId: number) => {
-    fetch(`http://localhost:3001/movies/delete/${movieId}`, {
-        method: "DELETE",
-        mode: "cors",
-        body: null,
-    });
-    console.log(movieId);
-    window.location.reload(); // Reloads current window to update the UI
-};
+import { MovieCard } from "./MovieCard";
 
 export const MovieList = () => {
     const [movies, setMovies] = useState<any[]>([]);
     // Probably want to lift the state to the parent app so that each update button is independent of the others.
-    const [showUpdateMovieForm, setShowUpdateMovieForm] = useState(false);
+    const [showUpdateMovieForm, setShowUpdateMovieForm] = useState<{
+        [id: number]: boolean;
+    }>({});
+    const [showFullDescription, setShowFullDescription] = useState<{
+        [id: number]: boolean;
+    }>({}); // is to say that this is an object, where each key is a number, and each value is a boolean.
+
+    const showFullDescriptionHandler = (movieId: number) => {
+        setShowFullDescription((prevState) => ({
+            ...prevState,
+            [movieId]: !prevState[movieId],
+        }));
+        console.log(showFullDescription);
+    };
+
+    const toggleUpdateForm = (movieId: number) => {
+        setShowUpdateMovieForm((prevState) => ({
+            ...prevState,
+            [movieId]: !prevState[movieId],
+        }));
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,47 +46,14 @@ export const MovieList = () => {
     return (
         <div className="pageContentContainer">
             {movies.map((movie) => (
-                <div key={movie.id}>
-                    <Card>
-                        <img
-                            className="moviePosters"
-                            src={movie.poster}
-                            alt={"Hero-Movie Poster"}
-                        />
-                        <h2>{movie.title}</h2>
-                        <p className="year">{movie.year}</p>
-                        <p className="description">{movie.description}</p>
-                        <p className="runtime">
-                            Runtime: {movie.runtime} minutes
-                        </p>
-
-                        <footer className="cardButtonContainer">
-                            <button
-                                className="updateButton"
-                                onClick={() =>
-                                    setShowUpdateMovieForm(!showUpdateMovieForm)
-                                }
-                            >
-                                {showUpdateMovieForm ? "Hide " : "Show "}
-                                Update
-                            </button>
-                            {showUpdateMovieForm ? (
-                                <MovieForm
-                                    updateMode={true}
-                                    movieId={movie.id}
-                                    showAddMovie={false}
-                                    moviePoster=""
-                                />
-                            ) : null}
-                            <button
-                                className="deleteButton"
-                                onClick={() => DeleteMovie(movie.id)}
-                            >
-                                Delete
-                            </button>
-                        </footer>
-                    </Card>
-                </div>
+                <MovieCard
+                    key={movie.id} // passing key means I probably don't need to use movie.id in my actual MovieCard. Reassess wasted resources.
+                    movie={movie}
+                    showFullDescriptionHandler={showFullDescriptionHandler}
+                    toggleUpdateForm={toggleUpdateForm}
+                    showUpdateMovieForm={showUpdateMovieForm}
+                    showFullDescription={showFullDescription}
+                />
             ))}
         </div>
     );

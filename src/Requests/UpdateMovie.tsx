@@ -4,6 +4,7 @@ export const updateMovieFetch = async (
     movieDetails: Movie,
     movieId: number
 ) => {
+    console.log("This should be the right movie id number:", movieId);
     const response = await fetch(
         `http://localhost:3001/movies/updateMovies/${movieId}`,
         {

@@ -14,7 +14,12 @@ const getAllMovies = () => {
     return db("movies").select("*");
 };
 
+const getSpecificMovie = (id) => {
+    return db("movies").where(id);
+};
+
 const updateMovie = (title, description, runtime, year, poster, movieId) => {
+    // TODO: I believe the movieId parameter is incorrect.
     return db("movies").where({ id: movieId }).update({
         title: title,
         description: description,
@@ -28,4 +33,10 @@ const deleteMovie = (movieId) => {
     return db("movies").where({ id: movieId }).del();
 };
 
-module.exports = { addMovie, getAllMovies, deleteMovie, updateMovie };
+module.exports = {
+    addMovie,
+    getAllMovies,
+    deleteMovie,
+    updateMovie,
+    getSpecificMovie,
+};

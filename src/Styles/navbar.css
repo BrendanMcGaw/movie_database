@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap");
+
+.navbarContainer {
+    background-color: #0f0606;
+    font-family: "Inknut Antiqua", serif;
+    color: #e0e1dd;
+    display: grid;
+    grid-template-rows: 100px;
+    grid-template-columns: 458px 675px 110px 120px 120px 120px 145px 120px;
+    border-bottom: 2px solid #490000;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.pageTitle {
+    font-size: 48px;
+    align-self: center;
+    justify-self: center;
+}
+
+.navbarItem {
+    font-size: 24px;
+    align-self: center;
+    padding-top: 15px;
+}
+
+/* .dropdownMenu {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+} */

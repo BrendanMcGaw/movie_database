@@ -15,7 +15,7 @@
     flex-direction: column;
     min-height: 650px;
     max-height: 1500px;
-    width: 250px;
+    max-width: 250px;
     border: 2px solid white;
     border-radius: 12px;
 }
@@ -70,13 +70,36 @@ h2 {
 .updateButton,
 .deleteButton {
     margin-left: 5px;
-    background-color: rgb(182, 61, 61);
+    background-color: #650000;
     height: 35px;
     align-self: flex-end; /* Allows me to put my buttons at the end of the cardContainer */
     width: 100px;
     font-size: 14px;
-    color: black;
+    color: rgb(230, 215, 215);
     font-family: "DM Serif Text", serif;
-    font-weight: 600;
+    font-weight: lighter;
     font-style: normal;
+}
+
+.updateButton:hover,
+.deleteButton:hover {
+    background-color: rgb(211, 115, 115);
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+.readMoreButton {
+    background-color: #2f0000;
+    font-weight: bolder;
+    font-size: 12px;
+    font-style: oblique;
+    box-shadow: 0px 2px 5px black;
+    color: #e0e1dd;
+    border: none;
+}
+
+.readMoreButton:hover {
+    cursor: pointer;
+    background-color: #650000;
+    transition-duration: 150ms;
 }
