@@ -1,7 +1,13 @@
+import "../Styles/Home.css";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+
 export const HomePage = () => {
     return (
-        <div style={{ backgroundColor: "red", height: 500, width: 1000 }}>
-            <div></div>
+        <div className="homepageContainer">
+            <input
+                placeholder="Search for movies..."
+                className="searchInput"
+            ></input>
         </div>
     );
 };
