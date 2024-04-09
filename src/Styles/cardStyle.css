@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
-
+/* Probably create the whole styles for all of this Movie Card as a styled component. */
+/* Set the buttons separately. */
 .pageContentContainer {
     display: flex;
     flex: 1;
@@ -73,6 +74,33 @@ h2 {
     border-bottom-right-radius: 0px;
 }
 
+<<<<<<< HEAD
+=======
+/* TODO: Remake these buttons under styled components. */
+.updateButton,
+.deleteButton {
+    margin-left: 5px;
+    background-color: #650000;
+    height: 35px;
+    align-self: flex-end; /* Allows me to put my buttons at the end of the cardContainer */
+    width: 100px;
+    font-size: 14px;
+    color: rgb(230, 215, 215);
+    font-family: "DM Serif Text", serif;
+    font-weight: lighter;
+    font-style: normal;
+}
+
+/* hover under styled components */
+.updateButton:hover,
+.deleteButton:hover {
+    background-color: rgb(211, 115, 115);
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+/* Create under styled components */
+>>>>>>> e92b64dabafdb3fa8b465da366619685cd0e5b52
 .readMoreButton {
     background-color: #2f0000;
     font-weight: bolder;
@@ -83,6 +111,7 @@ h2 {
     border: none;
 }
 
+/* hover under styled components. */
 .readMoreButton:hover {
     cursor: pointer;
     background-color: #650000;
