@@ -3,6 +3,7 @@ import "../Styles/cardStyle.css";
 import { Link } from "react-router-dom";
 import { MovieForm } from "./MovieForm";
 import { DeleteMovie } from "../Requests/DeleteMovie";
+import { CardButtons } from "../Styles/styled-components";
 
 export type MovieCardProps = {
     movie: {
@@ -54,7 +55,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
             <p className="runtime">Runtime: {movie.runtime} minutes</p>
 
             <footer className="cardButtonContainer">
-                <button
+                <CardButtons
                     className="updateButton"
                     onClick={() => {
                         toggleUpdateForm(movie.id);
@@ -63,7 +64,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                 >
                     {showUpdateMovieForm[movie.id] ? "Hide " : "Show "}
                     Update
-                </button>
+                </CardButtons>
                 {showUpdateMovieForm[movie.id] ? (
                     <MovieForm
                         updateMode={true}
@@ -72,12 +73,12 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                         moviePoster=""
                     />
                 ) : null}
-                <button
+                <CardButtons
                     className="deleteButton"
                     onClick={() => DeleteMovie(movie.id)}
                 >
                     Delete
-                </button>
+                </CardButtons>
             </footer>
         </div>
     );

@@ -14,6 +14,7 @@ export const MoviePage = () => {
                     `http://localhost:3001/movies/getMovies/${id}`
                 );
                 const data = await response.json();
+                console.log("This is the data being fetched" + data);
                 setMovie(data);
             } catch (error) {
                 console.log("Error fetching movies for front-end", error);
