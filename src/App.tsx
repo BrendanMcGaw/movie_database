@@ -14,8 +14,8 @@ function App() {
             <main>
                 {/* if showAddMovie is true, render the movieForm. */}
                 <Routes>
-                    <Route path="/HomePage" element={<HomePage />} />
-                    <Route path="/browseMovies" element={<MovieList />} />
+                    <Route path="/homepage" element={<HomePage />} />
+                    <Route path="/browse-movies" element={<MovieList />} />
                     <Route path="/movie/:id" element={<MoviePage />} />
                 </Routes>
             </main>
