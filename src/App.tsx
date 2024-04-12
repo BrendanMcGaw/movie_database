@@ -32,7 +32,7 @@ function App() {
                 {/* if showAddMovie is true, render the movieForm. */}
                 <Routes>
                     <Route path="/" element={<MovieList />} />
-                    <Route path="/movie/:id" element={<MoviePage />} />
+                    <Route path="/movie/:title" element={<MoviePage />} />
                 </Routes>
             </main>
         </div>
