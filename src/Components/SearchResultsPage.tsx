@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { Navbar } from "./Navbar";
+// import React, { useState } from "react";
+// import { Navbar } from "./Navbar";
 
-const SearchResultPage = () => {
-    const [searchResult, setSearchResult] = useState<any>;
+// const SearchResultPage = () => {
+//     const [searchResult, setSearchResult] = useState<any>;
 
-    return (
-        <div className="pageLayout">
-            {" "}
-            <Navbar />
-            <div className="searchResults"></div>
-        </div>
-    );
-};
+//     return (
+//         <div className="pageLayout">
+//             {" "}
+//             <Navbar />
+//             <div className="searchResults"></div>
+//         </div>
+//     );
+// };
 
 export {};
