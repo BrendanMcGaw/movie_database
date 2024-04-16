@@ -18,12 +18,13 @@ Giving me a brief view of a full stack development ennvironment.
 
 
 ### 1: Clone Repo 
-### 2: Delete package-lock.json in the root directory 
-### 3: Delete package-lock.json in the backend directory.
-### 4: Run `npm install` in the root directory
-### 5: Run `npm install` in the backend directory.
-### 6: Run `docker-compose up --build` in the root directory.
-### 7: Run `npm start` in the root directory.
+### 2: Rename example.env to just .env
+### 3: Delete package-lock.json in the root directory 
+### 4: Delete package-lock.json in the backend directory.
+### 5: Run `npm install` in the root directory
+### 6: Run `npm install` in the backend directory.
+### 7: Run `docker-compose up --build` in the root directory.
+### 8: Run `npm start` in the root directory.
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
