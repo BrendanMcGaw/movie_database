@@ -18,7 +18,7 @@ Giving me a brief view of a full stack development ennvironment.
 
 
 ### 1: Clone Repo 
-### 2: Rename example.env to just `.env`.
+### 2: In backend directory. Rename example.env to just `.env`.
 ### 3: Delete package-lock.json in the root directory. 
 ### 4: Delete package-lock.json in the backend directory.
 ### 5: Run `npm install` in the root directory.
