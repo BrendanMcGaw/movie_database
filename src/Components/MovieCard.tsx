@@ -3,7 +3,7 @@ import "../Styles/cardStyle.css";
 import { Link } from "react-router-dom";
 import { MovieForm } from "./MovieForm";
 import { DeleteMovie } from "../Requests/DeleteMovie";
-import { CardButtons } from "../Styles/styled-components";
+import { CardButtons } from "./Buttons/Buttons-styles";
 
 export type MovieCardProps = {
     movie: {

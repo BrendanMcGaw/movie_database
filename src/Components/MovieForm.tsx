@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Movie, postMovies } from "../Requests/MoviePost";
 import { updateMovieFetch } from "../Requests/UpdateMovie";
 import { useFetchMoviePoster } from "../Hooks/useFetchMoviePoster";
+import { SubmitButton } from "./Buttons/Buttons";
 
 type MovieFormProps = {
     updateMode: boolean;
@@ -112,9 +113,7 @@ export const MovieForm = ({
                     }
                 />
             </label>
-            <button className="formButton" type="submit">
-                Submit
-            </button>
+            <SubmitButton />
         </form>
     );
 };
