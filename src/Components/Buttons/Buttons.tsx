@@ -1,5 +1,5 @@
-import { StyledSubmitButton } from "./Buttons-styles";
-import { CardButtons } from "./Buttons-styles";
+import { StyledSubmitButton } from "./ButtonsStyles";
+import { CardButtons } from "./ButtonsStyles";
 import { DeleteMovie } from "../../Requests/DeleteMovie";
 
 export const SubmitButton = () => {

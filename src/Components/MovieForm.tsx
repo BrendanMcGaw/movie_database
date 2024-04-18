@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Movie, postMovies } from "../Requests/MoviePost";
 import { updateMovieFetch } from "../Requests/UpdateMovie";
 import { useFetchMoviePoster } from "../Hooks/useFetchMoviePoster";
+import { SubmitButton } from "./Buttons/Buttons";
 
 type MovieFormProps = {
     updateMode: boolean;
@@ -49,12 +50,15 @@ export const MovieForm = ({
         <form
             className="formContainer"
             onSubmit={(event) => {
-                console.log(
-                    "The details for the movie to either update or add are: ",
-                    movieDetails
-                );
-                handleClick();
-                // event.preventDefault();
+                event.preventDefault(); // Prevents the default form submission behaviour
+                setTimeout(() => {
+                    console.log(
+                        "The details for the movie to either update or add are: ",
+                        movieDetails
+                    );
+                    handleClick();
+                    window.location.reload();
+                }, 2000); // Delay the execution by 2000 ms allowing time to find correct poster URL in fetch.
             }}
         >
             <label className="inputContainer">
@@ -112,9 +116,7 @@ export const MovieForm = ({
                     }
                 />
             </label>
-            <button className="formButton" type="submit">
-                Submit
-            </button>
+            <SubmitButton />
         </form>
     );
 };
