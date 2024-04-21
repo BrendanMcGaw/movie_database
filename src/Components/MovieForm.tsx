@@ -50,12 +50,15 @@ export const MovieForm = ({
         <form
             className="formContainer"
             onSubmit={(event) => {
-                console.log(
-                    "The details for the movie to either update or add are: ",
-                    movieDetails
-                );
-                handleClick();
-                // event.preventDefault();
+                event.preventDefault(); // Prevents the default form submission behaviour
+                setTimeout(() => {
+                    console.log(
+                        "The details for the movie to either update or add are: ",
+                        movieDetails
+                    );
+                    handleClick();
+                    window.location.reload();
+                }, 2000); // Delay the execution by 2000 ms allowing time to find correct poster URL in fetch.
             }}
         >
             <label className="inputContainer">

@@ -18,6 +18,10 @@ const getSpecificMovie = ({ id }) => {
     return db("movies").where({ id }).select("*");
 };
 
+const getSearchResult = ({ title }) => {
+    return db("movies").where({ title }).select("*");
+};
+
 const updateMovie = (title, description, runtime, year, poster, movieId) => {
     // TODO: I believe the movieId parameter is incorrect.
     return db("movies").where({ id: movieId }).update({
