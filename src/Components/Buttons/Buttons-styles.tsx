@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+export const StyledSubmitButton = styled.button`
+    background-color: #e0e1dd;
+    color: black;
+    height: 3rem;
+    font-size: 20px;
+    font-weight: bold;
+`;
+
 export const CardButtons = styled.button`
     margin-left: 5px;
     background-color: #650000;
