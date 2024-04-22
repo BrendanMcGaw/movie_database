@@ -1,5 +1,5 @@
 import "../Styles/Home.css";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { Search } from "./Search/Searchbar";
 
 export const HomePage = () => {
     return (
@@ -10,10 +10,11 @@ export const HomePage = () => {
             </h3>
 
             {/* TODO: functionality to go to Link of moviePage related to title of the movie, where the id matches an id that is present in the database. */}
-            <input
+            <Search />
+            {/* <input
                 placeholder="Search for movies..."
                 className="searchInput"
-            ></input>
+            ></input> */}
         </div>
     );
 };

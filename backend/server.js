@@ -8,6 +8,7 @@ const {
     updateMovie,
     deleteMovie,
     getSpecificMovie,
+    getFilteredData,
 } = require("./database/movieModel.js");
 
 app.use(express.json());
@@ -52,6 +53,19 @@ app.get("/movies/getMovies/:id", async (req, res) => {
 
     try {
         const movieData = await getSpecificMovie({ id: movieId });
+        res.status(201).json(movieData);
+        console.log(movieData);
+    } catch (error) {
+        console.log("Could not find movie", error);
+        throw error;
+    }
+});
+
+app.get("/movies/getMovies/:title", async (req, res) => {
+    const title = req.params.title;
+
+    try {
+        const movieData = await getFilteredData({ title: title });
         res.status(201).json(movieData);
         console.log(movieData);
     } catch (error) {

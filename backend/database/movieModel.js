@@ -18,8 +18,8 @@ const getSpecificMovie = ({ id }) => {
     return db("movies").where({ id }).select("*");
 };
 
-const getSearchResult = ({ title }) => {
-    return db("movies").where({ title }).select("*");
+const getFilteredData = ({ movieQuery }) => {
+    return db("movies").where({ title: movieQuery }).select("*");
 };
 
 const updateMovie = (title, description, runtime, year, poster, movieId) => {

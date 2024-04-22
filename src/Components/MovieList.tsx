@@ -37,6 +37,7 @@ export const MovieList = () => {
                 );
                 const data = await response.json();
                 setMovies(data);
+                console.log("Where are my hecking movies?", movies);
             } catch (error) {
                 console.log("Error fetching movies for front-end", error);
             }

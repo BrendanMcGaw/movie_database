@@ -1,24 +1,24 @@
-export {};
-
 // import React, { useState, useEffect } from "react";
 
-// const GetMovie = () => {
+// export const GetAllMovies = () => {
+//     const [movies, setMovies] = useState<any[]>([]);
+
 //     useEffect(() => {
 //         const fetchData = async () => {
 //             try {
-//                 console.log("LETS FETCH!!");
-//                 // Getting TypeError failed to fetch.
 //                 const response = await fetch(
-//                     `http://localhost:3001/movies/getMovies/${id}`
+//                     "http://localhost:3001/movies/getMovies/"
 //                 );
 //                 const data = await response.json();
-//                 setMovie(data);
+//                 setMovies(data);
+//                 console.log("Where are my hecking movies?", movies);
 //             } catch (error) {
 //                 console.log("Error fetching movies for front-end", error);
 //             }
 //         };
 
 //         fetchData();
-//     }, [id]);
+//     }, []);
 // };
-// const [movie, setMovie] = useState<any[]>([]);
+
+export {};
