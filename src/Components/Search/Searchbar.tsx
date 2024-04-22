@@ -12,7 +12,7 @@ export const Search = () => {
         if (movieQuery) {
             try {
                 const response = await fetch(
-                    `http://localhost:3001/movies/getMovies/${movieQuery}` // its getting to this point and failing i believe. Further tests.
+                    `http://localhost:3001/movies/getMovies/${movieQuery}`
                 );
                 const data = await response.json();
                 console.log("What data are we getting here chief!?", data);

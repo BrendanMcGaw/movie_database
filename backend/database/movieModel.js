@@ -19,7 +19,7 @@ const getSpecificMovie = ({ id }) => {
 };
 
 const getFilteredData = (movieQuery) => {
-    const formattedQuery = `%${movieQuery}%`;
+    const formattedQuery = `%${movieQuery}%`; // allows for case insensitive queries
     return db("movies").whereILike("title", formattedQuery).select("*");
 };
 
