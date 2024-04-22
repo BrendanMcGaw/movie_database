@@ -18,8 +18,9 @@ const getSpecificMovie = ({ id }) => {
     return db("movies").where({ id }).select("*");
 };
 
-const getFilteredData = ({ movieQuery }) => {
-    return db("movies").where({ title: movieQuery }).select("*");
+const getFilteredData = (movieQuery) => {
+    const formattedQuery = `%${movieQuery}%`;
+    return db("movies").whereILike("title", formattedQuery).select("*");
 };
 
 const updateMovie = (title, description, runtime, year, poster, movieId) => {
@@ -43,4 +44,5 @@ module.exports = {
     deleteMovie,
     updateMovie,
     getSpecificMovie,
+    getFilteredData,
 };

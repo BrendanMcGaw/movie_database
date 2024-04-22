@@ -6,12 +6,16 @@ export const Search = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault(); // Prevent the form from submitting normally
+        console.log(
+            "This is the handleSubmit before the infamous error of death!"
+        );
         if (movieQuery) {
             try {
                 const response = await fetch(
-                    `http://localhost:3001/movies/getMovies/${movieQuery}`
+                    `http://localhost:3001/movies/getMovies/${movieQuery}` // its getting to this point and failing i believe. Further tests.
                 );
                 const data = await response.json();
+                console.log("What data are we getting here chief!?", data);
                 setMovies(data);
                 console.log("Filtered Movie???", movies);
             } catch (error) {
