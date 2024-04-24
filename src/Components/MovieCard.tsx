@@ -1,8 +1,6 @@
 import React from "react";
 import "../Styles/cardStyle.css";
 import { Link } from "react-router-dom";
-import { MovieForm } from "./MovieForm";
-import { CardButtons } from "../Styles/styled-components";
 import { DeleteButton, UpdateButton } from "./Buttons/Buttons";
 
 export type MovieCardProps = {
@@ -62,24 +60,6 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                     showUpdateMovieForm={showUpdateMovieForm}
                     showFullDescription={showFullDescription}
                 />
-                {/* <CardButtons
-                    className="updateButton"
-                    onClick={() => {
-                        toggleUpdateForm(movie.id);
-                        console.log(movie.id);
-                    }}
-                >
-                    {showUpdateMovieForm[movie.id] ? "Hide " : "Show "}
-                    Update
-                </CardButtons>
-                {showUpdateMovieForm[movie.id] ? (
-                    <MovieForm
-                        updateMode={true}
-                        movieId={movie.id}
-                        showAddMovie={false}
-                        moviePoster=""
-                    />
-                ) : null} */}
                 <DeleteButton movieId={movie.id} />
             </footer>
         </div>
