@@ -27,6 +27,7 @@ export const Search = () => {
         <section>
             <form onSubmit={handleSubmit}>
                 <input
+                    className="searchInput" //TODO: Change this to a styled component.
                     type="text"
                     placeholder="Search for movies..."
                     onChange={(e) => {
