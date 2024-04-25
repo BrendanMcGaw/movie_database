@@ -13,4 +13,6 @@
 //     );
 // };
 
+//TODO: Redirect searchBar page to this page after searching.
+//TODO: Display MovieCards assosciated with the searched title.
 export {};

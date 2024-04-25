@@ -11,7 +11,7 @@ export const MoviePage = () => {
                 console.log("LETS FETCH!!");
                 // Getting TypeError failed to fetch.
                 const response = await fetch(
-                    `http://localhost:3001/movies/getMovies/${id}` // need to make this title to search for titles? Maybe?
+                    `http://localhost:3001/movies/getMovies/moviePage/${id}` // need to make this title to search for titles? Maybe?
                 );
                 const data = await response.json();
                 console.log("This is the data being fetched" + data);
