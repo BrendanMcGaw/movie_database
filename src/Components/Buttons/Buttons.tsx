@@ -1,16 +1,42 @@
+import React, { useState } from "react";
 import { StyledSubmitButton } from "./ButtonsStyles";
 import { CardButtons } from "./ButtonsStyles";
 import { DeleteMovie } from "../../Requests/DeleteMovie";
-import { MovieCardProps } from "../MovieCard";
 import { MovieForm } from "../MovieForm";
+import { MovieFormProps } from "../MovieForm";
+import { MovieCardProps } from "../MovieCard";
+
+export const AddMovieButton: React.FC<MovieFormProps> = ({
+    updateMode,
+    movieId,
+}) => {
+    const [showAddMovie, setShowAddMovie] = useState(false);
+    return (
+        <>
+            <header className="App-header">
+                <button
+                    className="addMovieButton"
+                    onClick={() => setShowAddMovie(!showAddMovie)}
+                >
+                    {showAddMovie ? "" : ""} Add Movie
+                </button>
+            </header>
+            {showAddMovie ? (
+                <MovieForm
+                    updateMode={false}
+                    movieId={0}
+                    showAddMovie={true}
+                    moviePoster=""
+                />
+            ) : null}
+        </>
+    );
+};
 
 export const SubmitButton = () => {
     return <StyledSubmitButton type="submit">Submit</StyledSubmitButton>;
 };
-// Function Parameter Destructuring: With { movieId },
-// you're specifying that you expect an object as an argument,
-// and you want to extract the movieId property from that object directly.
-// This is a shorthand notation in JavaScript and TypeScript to extract properties from objects.
+
 export const DeleteButton = ({ movieId }: { movieId: number }) => {
     console.log("This is the movie Id information", movieId);
     return (

@@ -8,13 +8,8 @@ export const HomePage = () => {
                 Capturing the Heart of Cinema with Picture Pulse: Your Gateway
                 to Movie Magic!
             </h3>
-
             {/* TODO: functionality to go to Link of moviePage related to title of the movie, where the id matches an id that is present in the database. */}
             <Search />
-            {/* <input
-                placeholder="Search for movies..."
-                className="searchInput"
-            ></input> */}
         </div>
     );
 };
