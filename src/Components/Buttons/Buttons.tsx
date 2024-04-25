@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { StyledSubmitButton } from "./ButtonsStyles";
-import { CardButtons } from "./ButtonsStyles";
+import { AddMovieButtonHeaderStyle, StyledSubmitButton } from "./ButtonsStyles";
+import { CardButtons, AddMovieButtonStyle } from "./ButtonsStyles";
 import { DeleteMovie } from "../../Requests/DeleteMovie";
 import { MovieForm } from "../MovieForm";
 import { MovieFormProps } from "../MovieForm";
@@ -13,14 +13,13 @@ export const AddMovieButton: React.FC<MovieFormProps> = ({
     const [showAddMovie, setShowAddMovie] = useState(false);
     return (
         <>
-            <header className="App-header">
-                <button
-                    className="addMovieButton"
+            <AddMovieButtonHeaderStyle>
+                <AddMovieButtonStyle
                     onClick={() => setShowAddMovie(!showAddMovie)}
                 >
                     {showAddMovie ? "" : ""} Add Movie
-                </button>
-            </header>
+                </AddMovieButtonStyle>
+            </AddMovieButtonHeaderStyle>
             {showAddMovie ? (
                 <MovieForm
                     updateMode={false}
@@ -46,10 +45,8 @@ export const DeleteButton = ({ movieId }: { movieId: number }) => {
 
 export const UpdateButton: React.FC<MovieCardProps> = ({
     movie,
-    showFullDescriptionHandler,
     toggleUpdateForm,
     showUpdateMovieForm,
-    showFullDescription,
 }) => {
     return (
         // To encapsulate 2 separate elements in a functional component, i had to wrap them in a shard fragment.

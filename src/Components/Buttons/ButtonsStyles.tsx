@@ -33,3 +33,24 @@ export const CardButtons = styled.button`
         transition-duration: 300ms;
     }
 `;
+
+export const AddMovieButtonStyle = styled.button`
+    background-color: #e0e1dd;
+    transition-duration: 5000;
+    height: 100px;
+    width: 600px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: #1b263b;
+    box-shadow: -1px 2px 15px black;
+    margin-bottom: 35px;
+`;
+
+export const AddMovieButtonHeaderStyle = styled.header`
+    background-color: #0f0606;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;

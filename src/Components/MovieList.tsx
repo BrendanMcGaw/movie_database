@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MovieCard } from "./MovieCard";
-import { MovieForm } from "./MovieForm";
 import { AddMovieButton } from "./Buttons/Buttons";
-import { MovieCardProps } from "./MovieCard";
 
 import "../Styles/App.css";
 
