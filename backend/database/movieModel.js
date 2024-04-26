@@ -24,7 +24,6 @@ const getFilteredData = (movieQuery) => {
 };
 
 const updateMovie = (title, description, runtime, year, poster, movieId) => {
-    // TODO: I believe the movieId parameter is incorrect.
     return db("movies").where({ id: movieId }).update({
         title: title,
         description: description,
