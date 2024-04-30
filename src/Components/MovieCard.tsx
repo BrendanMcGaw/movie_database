@@ -2,21 +2,8 @@ import React from "react";
 import "../Styles/cardStyle.css";
 import { Link } from "react-router-dom";
 import { DeleteButton, UpdateButton } from "./Buttons/Buttons";
+import { MovieCardProps } from "../App";
 
-export type MovieCardProps = {
-    movie: {
-        id: number;
-        title: string;
-        poster: string;
-        year: number;
-        description: string;
-        runtime: number;
-    };
-    showFullDescriptionHandler: (movieId: number) => void;
-    toggleUpdateForm: (movieId: number) => void;
-    showUpdateMovieForm: { [id: number]: boolean };
-    showFullDescription: { [id: number]: boolean };
-};
 // key is also a property that has been passed. movie.id unnecessary.
 export const MovieCard: React.FC<MovieCardProps> = ({
     movie,

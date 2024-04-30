@@ -62,7 +62,7 @@ app.get("/movies/getMovies/moviePage/:id", async (req, res) => {
 });
 
 // Currently working to get the correct movie. But need to get a new route as the last one is no good!
-app.get("/movies/getMovies/searchResult/:title", async (req, res) => {
+app.get("/movies/getMovies/search-results/:title", async (req, res) => {
     console.log("Did we make it to here? This is the app.get");
     const { title } = req.params;
     try {

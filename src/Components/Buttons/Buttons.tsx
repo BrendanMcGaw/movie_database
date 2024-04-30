@@ -4,7 +4,7 @@ import { CardButtons, AddMovieButtonStyle } from "./ButtonsStyles";
 import { DeleteMovie } from "../../Requests/DeleteMovie";
 import { MovieForm } from "../MovieForm";
 import { MovieFormProps } from "../MovieForm";
-import { MovieCardProps } from "../MovieCard";
+import { MovieCardProps } from "../../App";
 
 export const AddMovieButton: React.FC<MovieFormProps> = ({
     updateMode,

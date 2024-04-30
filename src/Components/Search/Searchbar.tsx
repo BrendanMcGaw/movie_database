@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Search = () => {
     const [movieQuery, setMovieQuery] = useState<string>();
-    const [movies, setMovies] = useState<any>({});
+    const [searchResults, setSearchResults] = useState<any>({});
 
+    const navigate = useNavigate();
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault(); // Prevent the form from submitting normally
         // setup a route page to redirect to and display the results.
@@ -14,11 +15,19 @@ export const Search = () => {
         if (movieQuery) {
             try {
                 const response = await fetch(
-                    `http://localhost:3001/movies/getMovies/searchResult/${movieQuery}`
+                    `http://localhost:3001/movies/getMovies/search-results/${movieQuery}`
                 );
                 const data = await response.json();
-                console.log("What data are we getting here chief!?", data);
-                setMovies(data);
+                console.log(
+                    "This is the data before it gets set to state:",
+                    data
+                );
+                setSearchResults(data);
+                navigate("/search-results", { state: { searchResults: data } });
+                console.log(
+                    "This is the data after it gets set to state: ",
+                    searchResults
+                );
             } catch (error) {
                 console.log("Error fetching movies for front-end", error);
             }

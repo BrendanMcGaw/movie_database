@@ -6,7 +6,6 @@ import "../Styles/App.css";
 
 export const MovieList = () => {
     const [movies, setMovies] = useState<any[]>([]);
-    // Probably want to lift the state to the parent app so that each update button is independent of the others.
     const [showUpdateMovieForm, setShowUpdateMovieForm] = useState<{
         [id: number]: boolean;
     }>({});
@@ -29,6 +28,8 @@ export const MovieList = () => {
         }));
     };
 
+    // Probably want to lift the state to the parent app so that each update button is independent of the others.
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -45,7 +46,6 @@ export const MovieList = () => {
 
         fetchData();
     }, []);
-
     // console.log(JSON.stringify(movies));
     return (
         <div className="pageContentContainer">
