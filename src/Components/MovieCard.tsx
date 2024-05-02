@@ -21,6 +21,11 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                     src={movie.poster}
                     alt={"Hero-Movie Poster"}
                 />
+                <img
+                    className="movieGlow"
+                    src={movie.poster}
+                    alt={"Hero-Movie Poster"}
+                />
             </Link>
             <div className="year">{movie.year}</div>
             <p className="description">

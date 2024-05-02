@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { MovieCard } from "../MovieCard";
-import { MovieCardProps } from "../../App";
 import "../../Styles/SearchBarStyles.css";
 
 export const SearchResultsPage = () => {

@@ -7,6 +7,7 @@ export const Search = () => {
     const [searchResults, setSearchResults] = useState<any>({});
 
     const navigate = useNavigate();
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault(); // Prevent the form from submitting normally
         // setup a route page to redirect to and display the results.

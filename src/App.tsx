@@ -5,7 +5,7 @@ import { Navbar } from "./Components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import { MoviePage } from "./Components/MoviePage";
 import { HomePage } from "./Components/HomePage";
-import { SearchResultsPage } from "./Components/Search/SearchResultsPage";
+import { SearchResultsPage } from "./Components/Search/ResultsPage";
 // layout of overall page structure should be done here. Import components here.
 export type MovieCardProps = {
     movie: {
