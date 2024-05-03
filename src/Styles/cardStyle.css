@@ -102,3 +102,7 @@ h2 {
     width: 106%;
     height: 106%;
 }
+
+.movieGlow:hover {
+    filter: blur(7px);
+}

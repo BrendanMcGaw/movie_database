@@ -78,3 +78,17 @@ main {
 header {
     width: 100vw;
 }
+
+.paginationContainer {
+    display: flex;
+    background-color: #2f0000;
+    color: white;
+    width: 100%;
+    justify-content: center;
+    margin-top: 25px;
+    flex: 1;
+}
+
+.paginationStyle {
+    max-width: 50vw;
+}

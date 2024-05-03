@@ -7,3 +7,5 @@ export const DeleteMovie = (movieId: number) => {
     console.log(movieId);
     window.location.reload(); // Reloads current window to update the UI
 };
+
+// reload page not working with search result page.
