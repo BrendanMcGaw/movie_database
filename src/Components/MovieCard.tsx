@@ -3,6 +3,7 @@ import "../Styles/cardStyle.css";
 import { Link } from "react-router-dom";
 import { DeleteButton, UpdateButton } from "./Buttons/Buttons";
 import { MovieCardProps } from "../App";
+import { TiDelete } from "react-icons/ti";
 
 // key is also a property that has been passed. movie.id unnecessary.
 export const MovieCard: React.FC<MovieCardProps> = ({
@@ -21,6 +22,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                     src={movie.poster}
                     alt={"Hero-Movie Poster"}
                 />
+                <DeleteButton movieId={movie.id} />
                 <img
                     className="movieGlow"
                     src={movie.poster}
@@ -28,23 +30,23 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                 />
             </Link>
             <div className="year">{movie.year}</div>
-            <p className="description">
+            {/* <p className="description">
                 {showFullDescription[movie.id]
                     ? movie.description
                     : movie.description.slice(0, 100)}
-            </p>
-            <button
+            </p> */}
+            {/* <button
                 className="readMoreButton"
                 onClick={() => {
                     showFullDescriptionHandler(movie.id);
                 }}
             >
                 {showFullDescription[movie.id] ? "Read Less" : "Read More"}
-            </button>
+            </button> */}
 
-            <p className="runtime">Runtime: {movie.runtime} minutes</p>
+            {/* <p className="runtime">Runtime: {movie.runtime} minutes</p> */}
 
-            <footer className="cardButtonContainer">
+            {/* <footer className="cardButtonContainer">
                 <UpdateButton
                     movie={movie}
                     showFullDescriptionHandler={showFullDescriptionHandler}
@@ -52,8 +54,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                     showUpdateMovieForm={showUpdateMovieForm}
                     showFullDescription={showFullDescription}
                 />
-                <DeleteButton movieId={movie.id} />
-            </footer>
+            </footer> */}
         </div>
     );
 };

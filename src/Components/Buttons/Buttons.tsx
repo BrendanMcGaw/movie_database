@@ -5,6 +5,7 @@ import { DeleteMovie } from "../../Requests/DeleteMovie";
 import { MovieForm } from "../MovieForm";
 import { MovieFormProps } from "../MovieForm";
 import { MovieCardProps } from "../../App";
+import { TiDelete } from "react-icons/ti";
 
 export const AddMovieButton: React.FC<MovieFormProps> = ({
     updateMode,
@@ -36,10 +37,14 @@ export const SubmitButton = () => {
     return <StyledSubmitButton type="submit">Submit</StyledSubmitButton>;
 };
 
+// TODO: Make this a little red x in the top right corner of the card.
+// TODO: Make it hidden until :hover over card.
 export const DeleteButton = ({ movieId }: { movieId: number }) => {
     console.log("This is the movie Id information", movieId);
     return (
-        <CardButtons onClick={() => DeleteMovie(movieId)}>Delete</CardButtons>
+        <CardButtons onClick={() => DeleteMovie(movieId)}>
+            <TiDelete style={{ scale: "100px" }} />
+        </CardButtons>
     );
 };
 

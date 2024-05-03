@@ -13,7 +13,7 @@ export const MovieList: React.FC = () => {
         [id: number]: boolean;
     }>({}); // is to say that this is an object, where each key is a number, and each value is a boolean.
     const [pageNumber, setPageNumber] = useState<number>(1); // Initializing with 1.
-    const [pageSize, setPageSize] = useState<number>(5);
+    const [pageSize, setPageSize] = useState<number>(10);
 
     const showFullDescriptionHandler = (movieId: number) => {
         setShowFullDescription((prevState) => ({
@@ -81,6 +81,7 @@ export const MovieList: React.FC = () => {
                     />
                 ))}
             </div>
+            {/* TODO: Separate concerns, create component from pagination. */}
             <section className="paginationContainer">
                 <Pagination
                     className="paginationStyle"

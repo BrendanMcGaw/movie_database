@@ -14,8 +14,6 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    min-height: 650px;
-    max-height: 1500px;
     max-width: 250px;
     border-radius: 12px;
 }
@@ -96,13 +94,13 @@ h2 {
     position: absolute;
     z-index: -2;
     right: -7px;
-    top: -9px;
+    top: -12px;
     filter: blur(8px) saturate(125%) brightness(125%);
     opacity: 65%;
     width: 106%;
     height: 106%;
-}
-
-.movieGlow:hover {
-    filter: blur(7px);
+    /* TODO: Create animation loop of filter setting changes to make it look like its glowing? */
+    :hover {
+        filter: blur(35px);
+    }
 }
