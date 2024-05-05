@@ -1,6 +1,7 @@
 import React from "react";
 import "../Styles/cardStyle.css";
 import { Link } from "react-router-dom";
+
 import { DeleteButton } from "./Buttons/Buttons";
 import { MovieCardProps } from "../App";
 
