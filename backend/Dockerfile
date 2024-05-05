@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install app dependencies
-RUN apt-get up-date
+RUN apt-get update
 RUN npm install
 
 # Copy the rest of the application code to the working directory

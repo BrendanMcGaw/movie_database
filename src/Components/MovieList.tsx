@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { MovieCard } from "./MovieCard";
 import { AddMovieButton } from "./Buttons/Buttons";
 import { Pagination } from "antd";
+
 import "../Styles/App.css";
 
 export const MovieList: React.FC = () => {
     const [movies, setMovies] = useState<any[]>([]);
-    const [paginationVisibility, setPaginationVisibility] =
-        useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
     const [showUpdateMovieForm, setShowUpdateMovieForm] = useState<{
         [id: number]: boolean;
     }>({});
@@ -37,19 +37,26 @@ export const MovieList: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoading(true);
                 const response = await fetch(
                     "http://localhost:3001/movies/getMovies/"
                 );
                 const data = await response.json();
                 setMovies(data);
-                console.log("Where are my hecking movies?", movies);
+                setLoading(false);
+                console.log("after the fetch", loading);
             } catch (error) {
                 console.log("Error fetching movies for front-end", error);
+                setLoading(false);
             }
         };
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        console.log("Loading state changed:", loading);
+    }, [loading]);
 
     // Function to handle page change
     const handlePageChange = (pageNumber: number) => {
@@ -66,6 +73,8 @@ export const MovieList: React.FC = () => {
     return (
         <>
             <div className="pageContentContainer">
+                {loading ? <p>Loading....</p> : null}{" "}
+                {/* Added a loading bar to the movie browser */}
                 <AddMovieButton
                     updateMode={false}
                     movieId={0}
