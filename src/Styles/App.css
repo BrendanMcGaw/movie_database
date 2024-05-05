@@ -4,6 +4,7 @@ body {
     font-family: "DM Serif Text", serif;
     font-weight: 400;
     font-style: normal;
+    background-color: #0f0606;
 }
 /* Might want to change this font later. */
 
@@ -53,20 +54,7 @@ input {
     color: #e0e1dd;
 }
 
-.App-header {
-    background-color: #0f0606;
-    min-height: 20vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    border: 5px 15px 15px orange;
-}
-
 main {
-    background-color: #0f0606;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,18 +68,6 @@ main {
     color: #61dafb;
 }
 
-.addMovieButton {
-    background-color: #e0e1dd;
-    transition-duration: 5000;
-    height: 100px;
-    width: 600px;
-    font-size: 30px;
-    font-weight: bolder;
-    color: #1b263b;
-    box-shadow: -1px 2px 15px black;
-    margin-bottom: 35px;
-}
-
 .pageContentContainer {
     display: flex;
     flex: 1;
@@ -101,4 +77,18 @@ main {
 
 header {
     width: 100vw;
+}
+
+.paginationContainer {
+    display: flex;
+    background-color: #2f0000;
+    color: white;
+    width: 100%;
+    justify-content: center;
+    margin-top: 25px;
+    flex: 1;
+}
+
+.paginationStyle {
+    max-width: 50vw;
 }

@@ -4,7 +4,7 @@ import { updateMovieFetch } from "../Requests/UpdateMovie";
 import { useFetchMoviePoster } from "../Hooks/useFetchMoviePoster";
 import { SubmitButton } from "./Buttons/Buttons";
 
-type MovieFormProps = {
+export type MovieFormProps = {
     updateMode: boolean;
     movieId: number;
     showAddMovie: boolean;

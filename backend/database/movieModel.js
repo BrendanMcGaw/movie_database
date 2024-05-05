@@ -18,12 +18,12 @@ const getSpecificMovie = ({ id }) => {
     return db("movies").where({ id }).select("*");
 };
 
-const getSearchResult = ({ title }) => {
-    return db("movies").where({ title }).select("*");
+const getFilteredData = (movieQuery) => {
+    const formattedQuery = `%${movieQuery}%`; // allows for case insensitive queries
+    return db("movies").whereILike("title", formattedQuery).select("*");
 };
 
 const updateMovie = (title, description, runtime, year, poster, movieId) => {
-    // TODO: I believe the movieId parameter is incorrect.
     return db("movies").where({ id: movieId }).update({
         title: title,
         description: description,
@@ -43,4 +43,5 @@ module.exports = {
     deleteMovie,
     updateMovie,
     getSpecificMovie,
+    getFilteredData,
 };

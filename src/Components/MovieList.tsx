@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { MovieCard } from "./MovieCard";
-import { MovieForm } from "./MovieForm";
+import { AddMovieButton } from "./Buttons/Buttons";
+import { Pagination } from "antd";
 import "../Styles/App.css";
 
-export const MovieList = () => {
+export const MovieList: React.FC = () => {
     const [movies, setMovies] = useState<any[]>([]);
-    // Probably want to lift the state to the parent app so that each update button is independent of the others.
+    const [paginationVisibility, setPaginationVisibility] =
+        useState<boolean>(false);
     const [showUpdateMovieForm, setShowUpdateMovieForm] = useState<{
         [id: number]: boolean;
     }>({});
     const [showFullDescription, setShowFullDescription] = useState<{
         [id: number]: boolean;
     }>({}); // is to say that this is an object, where each key is a number, and each value is a boolean.
-    const [showAddMovie, setShowAddMovie] = useState(false);
+    const [pageNumber, setPageNumber] = useState<number>(1); // Initializing with 1.
+    const [pageSize, setPageSize] = useState<number>(10);
 
     const showFullDescriptionHandler = (movieId: number) => {
         setShowFullDescription((prevState) => ({
@@ -29,6 +32,8 @@ export const MovieList = () => {
         }));
     };
 
+    // Probably want to lift the state to the parent app so that each update button is independent of the others.
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -37,6 +42,7 @@ export const MovieList = () => {
                 );
                 const data = await response.json();
                 setMovies(data);
+                console.log("Where are my hecking movies?", movies);
             } catch (error) {
                 console.log("Error fetching movies for front-end", error);
             }
@@ -45,36 +51,49 @@ export const MovieList = () => {
         fetchData();
     }, []);
 
+    // Function to handle page change
+    const handlePageChange = (pageNumber: number) => {
+        setPageNumber(pageNumber);
+    };
+
+    // Logic to cut up my movies array into 5 movies to display per page.
+    const displayedMovies = movies.slice(
+        (pageNumber - 1) * pageSize,
+        pageNumber * pageSize
+    );
+
     // console.log(JSON.stringify(movies));
     return (
-        <div className="pageContentContainer">
-            {/* TODO: Fix the styling on the add movie button appearing in line rather then in its own header. */}
-            <header className="App-header">
-                <button
-                    className="addMovieButton"
-                    onClick={() => setShowAddMovie(!showAddMovie)}
-                >
-                    {showAddMovie ? "" : ""} Add Movie
-                </button>
-            </header>
-            {showAddMovie ? (
-                <MovieForm
+        <>
+            <div className="pageContentContainer">
+                <AddMovieButton
                     updateMode={false}
                     movieId={0}
                     showAddMovie={true}
                     moviePoster=""
                 />
-            ) : null}
-            {movies.map((movie) => (
-                <MovieCard
-                    key={movie.id} // passing key means I probably don't need to use movie.id in my actual MovieCard. Reassess wasted resources.
-                    movie={movie}
-                    showFullDescriptionHandler={showFullDescriptionHandler}
-                    toggleUpdateForm={toggleUpdateForm}
-                    showUpdateMovieForm={showUpdateMovieForm}
-                    showFullDescription={showFullDescription}
+                {displayedMovies.map((movie) => (
+                    <MovieCard
+                        key={movie.id} // passing key means I probably don't need to use movie.id in my actual MovieCard. Reassess wasted resources.
+                        movie={movie}
+                        showFullDescriptionHandler={showFullDescriptionHandler}
+                        toggleUpdateForm={toggleUpdateForm}
+                        showUpdateMovieForm={showUpdateMovieForm}
+                        showFullDescription={showFullDescription}
+                    />
+                ))}
+            </div>
+            {/* TODO: Separate concerns, create component from pagination. */}
+            <section className="paginationContainer">
+                <Pagination
+                    hideOnSinglePage={true}
+                    defaultCurrent={1}
+                    defaultPageSize={pageSize} // Amount of items that are able to be seen per page.
+                    total={movies.length}
+                    current={pageNumber}
+                    onChange={handlePageChange}
                 />
-            ))}
-        </div>
+            </section>
+        </>
     );
 };

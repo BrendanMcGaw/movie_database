@@ -14,15 +14,13 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    min-height: 650px;
-    max-height: 1500px;
     max-width: 250px;
-    border: 2px solid white;
     border-radius: 12px;
 }
 
 .imgLink {
     display: flex;
+    position: relative;
     flex: 1;
     flex-direction: column;
 }
@@ -69,7 +67,6 @@ h2 {
 
 .moviePosters {
     border-radius: 5px;
-    border: 5px solid white;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
@@ -90,4 +87,20 @@ h2 {
     cursor: pointer;
     background-color: #650000;
     transition-duration: 150ms;
+}
+
+/* Positioning this image behind our previous image and creates a glowing background affect. */
+.movieGlow {
+    position: absolute;
+    z-index: -2;
+    right: -7px;
+    top: -12px;
+    filter: blur(8px) saturate(125%) brightness(125%);
+    opacity: 65%;
+    width: 106%;
+    height: 106%;
+    /* TODO: Create animation loop of filter setting changes to make it look like its glowing? */
+    :hover {
+        filter: blur(35px);
+    }
 }

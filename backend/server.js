@@ -8,6 +8,7 @@ const {
     updateMovie,
     deleteMovie,
     getSpecificMovie,
+    getFilteredData,
 } = require("./database/movieModel.js");
 
 app.use(express.json());
@@ -47,13 +48,27 @@ app.get("/movies/getMovies/", async (req, res) => {
 });
 
 //TODO: Is this now the problem?
-app.get("/movies/getMovies/:id", async (req, res) => {
+app.get("/movies/getMovies/moviePage/:id", async (req, res) => {
     const movieId = req.params.id;
 
     try {
         const movieData = await getSpecificMovie({ id: movieId });
         res.status(201).json(movieData);
         console.log(movieData);
+    } catch (error) {
+        console.log("Could not find movie", error);
+        throw error;
+    }
+});
+
+// Currently working to get the correct movie. But need to get a new route as the last one is no good!
+app.get("/movies/getMovies/search-results/:title", async (req, res) => {
+    console.log("Did we make it to here? This is the app.get");
+    const { title } = req.params;
+    try {
+        const movieData = await getFilteredData(title);
+        res.status(201).json(movieData);
+        console.log("Is this actually appearing anywhere???", movieData);
     } catch (error) {
         console.log("Could not find movie", error);
         throw error;
