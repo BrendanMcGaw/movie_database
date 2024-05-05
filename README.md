@@ -4,10 +4,8 @@ The goal of this project is to create a full stack web application that allows u
 This full stack web application was made in order to learn the fundamentals of backend, frontend and database.
 
 Current front-end example. 
-![image](https://github.com/BrendanMcGaw/movie_database/assets/46087405/339925c8-fe39-49d2-93ac-f96eb93fa644)
-![Screenshot 2024-03-21 001500 website](https://github.com/BrendanMcGaw/movie_database/assets/46087405/4b61b3ef-32d4-45a1-aa74-15ca769b0537)
-**Still under development**
-
+![Current Picture Pulse Home Page](https://github.com/BrendanMcGaw/movie_database/assets/46087405/a8f645f3-2549-474a-b322-71101b57b8a9)
+![Current Picture Pulse Movie Browse](https://github.com/BrendanMcGaw/movie_database/assets/46087405/86b1f018-2708-4925-ba63-153b53f9df33)
 Working on this project has allowed me to touch on Node, Express, PostgresSQL, Docker, Knex Query Builder, React, JavaScript, TypeScript and CSS. 
 Giving me a brief view of a full stack development ennvironment.
 
@@ -19,8 +17,8 @@ Giving me a brief view of a full stack development ennvironment.
 
 ### 1: Clone Repo 
 ### 2: In backend directory. Rename example.env to just `.env`.
-### 3: Delete package-lock.json in the root directory. Delete Node Modules from here.
-### 4: Delete package-lock.json in the backend directory. Delete Node Modules from here.
+### 3: Delete package-lock.json in the root directory. Delete Node Modules from root.
+### 4: Delete package-lock.json in the backend directory. Delete Node Modules from backend.
 ### 5: Run `npm install` in the root directory.
 ### 6: Run `npm install` in the backend directory.
 ### 7: Run `npm install knex --save-dev` in the backend directory.
@@ -32,10 +30,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
 Currently the database and backend are hosted on docker locally.
 Working towards a live implementation.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 You can then add movies to the database on the movies tab.
 
