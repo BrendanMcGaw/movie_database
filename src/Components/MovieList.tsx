@@ -54,10 +54,10 @@ export const MovieList: React.FC = () => {
         fetchData();
     }, []);
 
+    // Diagnostic tool to find out when the loading state changes.
     useEffect(() => {
         console.log("Loading state changed:", loading);
     }, [loading]);
-
     // Function to handle page change
     const handlePageChange = (pageNumber: number) => {
         setPageNumber(pageNumber);
