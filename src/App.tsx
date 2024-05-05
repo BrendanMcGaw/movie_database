@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import { MoviePage } from "./Components/MoviePage";
 import { HomePage } from "./Components/HomePage";
 import { SearchResultsPage } from "./Components/Search/ResultsPage";
+import { ConfigProvider } from "antd";
 // layout of overall page structure should be done here. Import components here.
 export type MovieCardProps = {
     movie: {
@@ -22,7 +23,7 @@ export type MovieCardProps = {
     showFullDescription: { [id: number]: boolean };
 };
 
-function App() {
+const App: React.FC = () => {
     return (
         <div className="App">
             <Navbar />
@@ -39,6 +40,6 @@ function App() {
             </main>
         </div>
     );
-}
+};
 
 export default App;

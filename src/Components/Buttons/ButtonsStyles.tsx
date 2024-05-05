@@ -16,18 +16,19 @@ export const StyledSubmitButton = styled.button`
     }
 `;
 
+// TODO: This should probably just be for the delete button.
 export const CardButtons = styled.button`
     /* TODO: Make button visibility: hidden. Unless you're mousing over the movieCard image, then make the button visible. Will require js, passing propertys? boolean stuff?  */
     /* TODO: Consider different icon with black centre for more readability. */
     border: none;
     padding: 0;
-    top: -23px;
-    right: -23px;
+    top: -16px;
+    right: -16px;
     position: absolute;
     background-color: #650000;
     align-self: flex-end; /* Allows me to put my buttons at the end of the cardContainer */
     height: 0px;
-    font-size: 48px;
+    font-size: 32px;
     color: rgb(228, 31, 31);
     font-family: "DM Serif Text", serif;
     font-weight: lighter;

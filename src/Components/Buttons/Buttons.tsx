@@ -6,6 +6,7 @@ import { MovieForm } from "../MovieForm";
 import { MovieFormProps } from "../MovieForm";
 import { MovieCardProps } from "../../App";
 import { TiDelete } from "react-icons/ti";
+import { IoTrashBin } from "react-icons/io5";
 
 export const AddMovieButton: React.FC<MovieFormProps> = ({
     updateMode,
@@ -43,7 +44,7 @@ export const DeleteButton = ({ movieId }: { movieId: number }) => {
     console.log("This is the movie Id information", movieId);
     return (
         <CardButtons onClick={() => DeleteMovie(movieId)}>
-            <TiDelete style={{ scale: "100px" }} />
+            <IoTrashBin />
         </CardButtons>
     );
 };

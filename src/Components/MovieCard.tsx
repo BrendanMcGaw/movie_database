@@ -1,9 +1,8 @@
 import React from "react";
 import "../Styles/cardStyle.css";
 import { Link } from "react-router-dom";
-import { DeleteButton, UpdateButton } from "./Buttons/Buttons";
+import { DeleteButton } from "./Buttons/Buttons";
 import { MovieCardProps } from "../App";
-import { TiDelete } from "react-icons/ti";
 
 // key is also a property that has been passed. movie.id unnecessary.
 export const MovieCard: React.FC<MovieCardProps> = ({

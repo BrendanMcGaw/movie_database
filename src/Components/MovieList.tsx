@@ -6,6 +6,8 @@ import "../Styles/App.css";
 
 export const MovieList: React.FC = () => {
     const [movies, setMovies] = useState<any[]>([]);
+    const [paginationVisibility, setPaginationVisibility] =
+        useState<boolean>(false);
     const [showUpdateMovieForm, setShowUpdateMovieForm] = useState<{
         [id: number]: boolean;
     }>({});
@@ -84,9 +86,9 @@ export const MovieList: React.FC = () => {
             {/* TODO: Separate concerns, create component from pagination. */}
             <section className="paginationContainer">
                 <Pagination
-                    className="paginationStyle"
+                    hideOnSinglePage={true}
                     defaultCurrent={1}
-                    defaultPageSize={pageSize}
+                    defaultPageSize={pageSize} // Amount of items that are able to be seen per page.
                     total={movies.length}
                     current={pageNumber}
                     onChange={handlePageChange}
