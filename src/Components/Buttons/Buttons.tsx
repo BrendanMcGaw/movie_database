@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { AddMovieButtonHeaderStyle, StyledSubmitButton } from "./ButtonsStyles";
 import { CardButtons, AddMovieButtonStyle } from "./ButtonsStyles";
@@ -6,7 +5,6 @@ import { DeleteMovie } from "../../Requests/DeleteMovie";
 import { MovieForm } from "../MovieForm";
 import { MovieFormProps } from "../MovieForm";
 import { MovieCardProps } from "../../App";
-import { TiDelete } from "react-icons/ti";
 import { IoTrashBin } from "react-icons/io5";
 
 export const AddMovieButton: React.FC<MovieFormProps> = ({
