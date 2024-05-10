@@ -61,7 +61,6 @@ main {
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-    padding-top: 25px;
 }
 
 .App-link {

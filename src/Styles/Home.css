@@ -1,8 +1,7 @@
 .homepageContainer {
     background-color: #0f0606;
     align-content: center;
-    /* TODO: Fix this height, fucking aweful. */
-    height: 86.1vh;
+    height: calc(100vh - 152px);
 }
 
 .homepageText {

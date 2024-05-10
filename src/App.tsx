@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import { MoviePage } from "./Components/MoviePage";
 import { HomePage } from "./Components/HomePage";
 import { SearchResultsPage } from "./Components/Search/ResultsPage";
+import { Footer } from "./Components/Footer/FooterComponent";
 // layout of overall page structure should be done here. Import components here.
 export type MovieCardProps = {
     movie: {
@@ -25,7 +26,7 @@ export type MovieCardProps = {
 const App: React.FC = () => {
     return (
         <div className="App">
-            <Navbar />
+            <Navbar /> {/* Navbar is our header. */}
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
@@ -37,6 +38,7 @@ const App: React.FC = () => {
                     />
                 </Routes>
             </main>
+            <Footer />
         </div>
     );
 };
