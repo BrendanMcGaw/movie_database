@@ -5,7 +5,7 @@ export const StyledFooter = styled.footer`
     bottom: 0;
     background-color: #650000;
     color: white;
-    height: 50px;
+    height: 5vh;
     width: 100vw;
     display: flex;
     flex-direction: row;
@@ -13,7 +13,7 @@ export const StyledFooter = styled.footer`
     gap: 15vw;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1srem;
 
     a {
         text-decoration: none;
