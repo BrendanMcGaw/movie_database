@@ -7,7 +7,7 @@ export const StyledFooter = styled.footer`
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 30vw;
+    gap: 15vw;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;

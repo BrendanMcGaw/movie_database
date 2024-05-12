@@ -26,7 +26,7 @@ export type MovieCardProps = {
 const App: React.FC = () => {
     return (
         <div className="App">
-            <Navbar /> {/* Navbar is our header. */}
+            <Navbar />
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage />} />

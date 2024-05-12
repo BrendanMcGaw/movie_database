@@ -8,8 +8,6 @@
     grid-template-rows: 100px;
     grid-template-columns: 458px 675px 110px 120px 120px 120px 145px 120px;
     border-bottom: 2px solid #490000; /* the 2 px extra for the home page height. */
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
 }
 
 .pageTitle {
