@@ -5,23 +5,23 @@
     font-family: "Inknut Antiqua", serif;
     color: #e0e1dd;
     display: grid;
-    grid-template-rows: 100px;
-    grid-template-columns: 458px 675px 110px 120px 120px 120px 145px 120px;
+    width: 100vw;
+    grid-template-rows: 10vh;
+    grid-template-columns: 20vw 35vw 6vw 6vw 6vw 6vw 7.5vw 6vw;
+    justify-content: center;
+    align-items: center;
+
     border-bottom: 2px solid #490000; /* the 2 px extra for the home page height. */
 }
 
 .pageTitle {
-    font-size: 48px;
-    align-self: center;
-    justify-self: center;
+    font-size: 2vw;
     text-decoration: inherit;
     color: inherit;
 }
 
 .navbarItem {
-    font-size: 24px;
-    align-self: center;
-    padding-top: 15px;
+    font-size: 1.2vw;
     text-decoration: inherit;
     color: inherit;
 }

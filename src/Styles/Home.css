@@ -2,6 +2,10 @@
     background-color: #0f0606;
     align-content: center;
     height: calc(100vh - 152px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #e0e1dd;
 }
 
 .homepageText {

@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
+    position: fixed;
+    bottom: 0;
     background-color: #650000;
     color: white;
     height: 50px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: row;
+    align-self: flex-end;
     gap: 15vw;
     justify-content: center;
     align-items: center;
