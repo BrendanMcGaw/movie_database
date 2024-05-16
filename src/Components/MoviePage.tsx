@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "../Styles/MoviePageStyles.css";
 
 export const MoviePage = () => {
     const { id } = useParams();
@@ -25,7 +26,7 @@ export const MoviePage = () => {
     }, [id]);
 
     return (
-        <div>
+        <div className="pageContent">
             {movie.map((movieData) => (
                 <div key={movieData.id}>
                     <img src={movieData.poster} alt="" />
