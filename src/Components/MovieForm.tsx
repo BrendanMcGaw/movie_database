@@ -23,6 +23,7 @@ export const MovieForm = ({
         year: 0,
         poster: "",
     });
+    const [findPoster, setFindPoster] = useState<Boolean>(false);
 
     const handleClick = () => {
         if (showAddMovie === true && updateMode === false) {
@@ -45,18 +46,19 @@ export const MovieForm = ({
             );
         }
     };
-    movieDetails.poster = useFetchMoviePoster(movieDetails);
+    movieDetails.poster = useFetchMoviePoster(movieDetails, { findPoster });
     return (
         <form
             className="formContainer"
             onSubmit={(event) => {
                 event.preventDefault(); // Prevents the default form submission behaviour
                 setTimeout(() => {
+                    setFindPoster(true);
+                    handleClick();
                     console.log(
                         "The details for the movie to either update or add are: ",
                         movieDetails
                     );
-                    handleClick();
                     window.location.reload();
                 }, 2000); // Delay the execution by 2000 ms allowing time to find correct poster URL in fetch.
             }}

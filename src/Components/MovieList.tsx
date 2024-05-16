@@ -22,7 +22,6 @@ export const MovieList: React.FC = () => {
             ...prevState,
             [movieId]: !prevState[movieId],
         }));
-        console.log(showFullDescription);
     };
 
     const toggleUpdateForm = (movieId: number) => {

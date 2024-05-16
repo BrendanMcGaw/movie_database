@@ -79,6 +79,8 @@ header {
 }
 
 .paginationContainer {
+    position: relative;
+    bottom: 0;
     display: flex;
     background-color: #2f0000;
     color: white;

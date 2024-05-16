@@ -5,7 +5,7 @@
     font-family: "Inknut Antiqua", serif;
     color: #e0e1dd;
     display: grid;
-    width: 100vw;
+    width: 100%;
     grid-template-rows: 10vh;
     grid-template-columns: 20vw 35vw 6vw 6vw 6vw 6vw 7.5vw 6vw;
     justify-content: center;

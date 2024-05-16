@@ -1,5 +1,4 @@
 import "../Styles/Home.css";
-
 import { Search } from "./Search/Searchbar";
 
 export const HomePage = () => {

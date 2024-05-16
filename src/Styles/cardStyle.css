@@ -14,7 +14,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    max-width: 250px;
+    max-width: 15vw;
     border-radius: 12px;
 }
 
