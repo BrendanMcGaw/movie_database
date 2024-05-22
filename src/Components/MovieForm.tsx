@@ -46,7 +46,8 @@ export const MovieForm = ({
             );
         }
     };
-    movieDetails.poster = useFetchMoviePoster(movieDetails, { findPoster });
+    // useFetchMoviePoster(movieDetails, { findPoster });
+    // movieDetails.poster = useFetchMoviePoster(movieDetails, { findPoster });
     return (
         <form
             className="formContainer"
