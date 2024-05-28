@@ -1,19 +1,9 @@
 import * as streamingAvailability from "streaming-availability";
-import { useState, useEffect } from "react";
+// import { useState } from "react";
 
-type MovieDetails = {
-    title: string;
-    year: number;
-    poster: string | undefined;
-};
-
-export const useFetchMoviePoster = async (
-    movieDetails: MovieDetails,
-    { findPoster }: { findPoster: Boolean }
-) => {
-    const [poster, setPoster] = useState<string | undefined>(
-        movieDetails.poster
-    );
+// Have to be able to pass keyword and yearMin and yearMax and use those to get the results.
+export const FetchMoviePoster = async () => {
+    // const [poster, setPoster] = useState<string | undefined>();
     const RAPID_API_KEY = "5a2f8e5325mshe833c4848a88ff8p1e325cjsncda270182198";
     const client = new streamingAvailability.Client(
         new streamingAvailability.Configuration({
@@ -22,16 +12,16 @@ export const useFetchMoviePoster = async (
     );
     const data = await client.showsApi.searchShowsByFilters({
         country: "au",
-        keyword: "Godzilla",
+        showType: "movie",
         yearMin: 2014,
         yearMax: 2014,
-        showType: "movie",
+        keyword: "Godzilla",
     });
     console.log(data);
     console.log(data.shows[0].imageSet.verticalPoster.w600);
     const movieImage: string = data.shows[0].imageSet.verticalPoster.w600;
-    setPoster(movieImage);
-    return poster;
+    // setPoster(movieImage);
+    return movieImage;
 };
 
 // export const useFetchMoviePoster = (

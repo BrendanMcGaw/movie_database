@@ -13,7 +13,7 @@ export const StyledFooter = styled.footer`
     gap: 15vw;
     justify-content: center;
     align-items: center;
-    font-size: 1srem;
+    font-size: 1.4rem;
 
     a {
         text-decoration: none;

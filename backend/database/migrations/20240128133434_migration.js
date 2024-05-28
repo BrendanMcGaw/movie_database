@@ -9,7 +9,7 @@ exports.up = (knex) => {
             // table.string("genre").notNullable();
             table.string("runtime");
             table.string("year"); // Runtime column, can't have null.
-            table.string("poster");
+            table.string("poster", [10000]);
             // table.string("director").notNullable(); // Director column, can't have null.
             // table.string("actors").notNullable(); // TODO: Add state functionality to add multiple actors. Not sure how to do this yet.
             // table.string("review"); // TODO: Potentially only add this functionality for users.
