@@ -62,7 +62,6 @@ export const AddMovieButtonStyle = styled.button`
     font-weight: bolder;
     color: #1b263b;
     box-shadow: -1px 2px 15px black;
-    margin-bottom: 35px;
 `;
 
 export const AddMovieButtonHeaderStyle = styled.header`

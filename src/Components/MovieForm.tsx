@@ -43,6 +43,8 @@ const GetThatPoster = async (movieDetails: MovieDetails) => {
     movieDetails.poster = data[0].imageSet.verticalPoster.w600;
 };
 //TODO: Works majority of the time, might need to check year, if year is provided, check for release date comparison. If no year provided or it doesn't match a release date of any of the objects in the array, then return the first poster in the array.
+//TODO: Streaming-options is another property we want to look into using. In fact we're going to want to use a lot of this information for getting the cast, directors, where to watch, etc...
+//TODO: Look into second API for getting movie trailers.
 
 export const MovieForm = ({
     updateMode,
@@ -94,7 +96,7 @@ export const MovieForm = ({
                         movieDetails
                     );
                     window.location.reload();
-                }, 2000); // Delay the execution by 2000 ms allowing time to find correct poster URL in fetch.
+                }, 500); // Delay the execution by 2000 ms allowing time to find correct poster URL in fetch.
             }}
         >
             <label className="inputContainer">
