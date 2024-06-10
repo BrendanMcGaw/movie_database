@@ -9,6 +9,11 @@ export const postMovies = async (movieDetails: Movie) => {
             },
             body: JSON.stringify(movieDetails),
         });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error status: ${response.status}`);
+        }
+
         return response.json();
     } catch (err) {
         console.error(err);

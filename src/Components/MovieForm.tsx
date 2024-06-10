@@ -62,27 +62,16 @@ export const MovieForm = ({
 
     const HandleClick = async () => {
         if (showAddMovie === true && updateMode === false) {
-            postMovies(movieDetails);
-            console.log(
-                "showAddMovie state is: ",
-                showAddMovie,
-                "updateMode state is: ",
-                updateMode
-            );
+            await postMovies(movieDetails);
+            showAddMovie = false; // resets the variable.
+            updateMode = false; // resets the variable.
         } else if (updateMode === true) {
-            updateMovieFetch(movieDetails, movieId);
-            console.log(
-                "showAddMovie state is: ",
-                showAddMovie,
-                "The movieId is:",
-                movieId, // movieId is straight wrong. TODO: Figure it out.
-                "updateMode state is: ",
-                updateMode
-            );
+            await updateMovieFetch(movieDetails, movieId);
+            updateMode = false; // resets the variable.
+            showAddMovie = false; // resets the variable.
         }
     };
-    // useFetchMoviePoster(movieDetails, { findPoster });
-    // movieDetails.poster = useFetchMoviePoster(movieDetails, { findPoster });
+
     return (
         <form
             className="formContainer"
@@ -90,7 +79,7 @@ export const MovieForm = ({
                 event.preventDefault(); // Prevents the default form submission behaviour
                 setTimeout(async () => {
                     await GetThatPoster(movieDetails);
-                    HandleClick();
+                    await HandleClick(); // TODO:Getting a fetch error from this somehow, look into it further.
                     console.log(
                         "The details for the movie to either update or add are: ",
                         movieDetails
