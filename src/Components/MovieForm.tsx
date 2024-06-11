@@ -13,11 +13,12 @@ export type MovieFormProps = {
 
 type MovieDetails = {
     title: string;
-    year: number;
+    year: number | undefined;
+    description: string;
     poster: string | undefined;
     apiDescription: string;
     releaseYear: number | undefined;
-    genres: string;
+    genres: string[];
     directors: string[] | undefined;
     actors: string[];
     whereToWatch: string[] | undefined;
@@ -28,6 +29,7 @@ type MovieDetails = {
 };
 
 // This works! I don't know why, I don't know how, but it works. I'm not going to touch it.
+// TODO: No longer does this just get a poster, change this shit and please for the love of god, put it in its own
 const GetThatPoster = async (movieDetails: MovieDetails) => {
     const RAPID_API_KEY = "5a2f8e5325mshe833c4848a88ff8p1e325cjsncda270182198";
     const client = new streamingAvailability.Client(
@@ -42,23 +44,23 @@ const GetThatPoster = async (movieDetails: MovieDetails) => {
     });
 
     console.log(JSON.stringify(data, null, 4));
-    //TODO: Allow for if statement to check through each array in the data list for a release date IF the year is provided.
     console.log(data[0].imageSet.verticalPoster.w600);
     movieDetails.poster = data[0].imageSet.verticalPoster.w600;
+    if (movieDetails.description === "") {
+        movieDetails.description = data[0].overview;
+    }
     movieDetails.apiDescription = data[0].overview;
-    movieDetails.releaseYear = data[0].releaseYear;
-    movieDetails.genres =
-        data[0].genres[0].name +
-        "/" +
-        data[0].genres[1].name +
-        "/" +
-        data[0].genres[2].name;
+    if (movieDetails.year === 0) {
+        movieDetails.year = data[0].releaseYear;
+    }
+    // movieDetails.genres = data[0].genres;
     movieDetails.directors = data[0].directors;
     movieDetails.actors = data[0].cast;
-    // movieDetails.whereToWatch = data[0].streamingOptions.us[0]; TODO:Prooving to be a bit difficult to get this to work.
+    // movieDetails.whereToWatch = data[0].streamingOptions.au[i]; iterate through each item in the array and find the name and url to get to the streaming service. REVIEW LOGS. TODO:Prooving to be a bit difficult to get this to work.
     // movieDetails.trailer = data[0].trailer; TODO:This will have to be obtained from a different API
     movieDetails.rating = data[0].rating;
     console.log(movieDetails.directors);
+    console.log(movieDetails.actors);
 };
 
 //TODO: Works majority of the time, might need to check year, if year is provided, check for release date comparison. If no year provided or it doesn't match a release date of any of the objects in the array, then return the first poster in the array.
@@ -78,7 +80,7 @@ export const MovieForm = ({
         poster: "",
         apiDescription: "",
         releaseYear: 0,
-        genres: "",
+        genres: [],
         directors: [],
         actors: [],
         whereToWatch: [],

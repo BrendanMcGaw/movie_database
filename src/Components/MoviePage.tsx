@@ -34,6 +34,10 @@ export const MoviePage = () => {
                     <h3>{movieData.description}</h3>
                     <p>{movieData.runtime}</p>
                     <p>{movieData.year}</p>
+                    <p>{movieData.actors}</p>
+                    <p>{movieData.genres}</p>
+                    <p>{movieData.directors}</p>
+                    <p>{movieData.rating}</p>
                 </div>
             ))}
         </div>

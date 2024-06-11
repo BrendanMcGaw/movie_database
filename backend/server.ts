@@ -19,14 +19,34 @@ const port = process.env.PORT;
 
 app.post("/", async (req: Request, res: Response) => {
     try {
-        const { title, description, runtime, year, poster } = req.body; // requests the body of text provided to the variables by the front end
+        const {
+            title,
+            description,
+            runtime,
+            year,
+            poster,
+            directors,
+            actors,
+            rating,
+            genres,
+            reviews,
+            trailer,
+            whereToWatch,
+        } = req.body; // requests the body of text provided to the variables by the front end
         console.log(req.body); // logs the requested body information as an object.
         const result = await addMovie(
             title,
             description,
             runtime,
             year,
-            poster
+            poster,
+            directors,
+            actors,
+            rating,
+            genres,
+            reviews,
+            trailer,
+            whereToWatch
         ); // Uses the function from movieModel and assigns thet body of text to each variable to turn it into a movie object.
         res.status(201).json({ message: "Movie added succesfully", result }); // Sends the resulting movie object to the database.
     } catch (error) {

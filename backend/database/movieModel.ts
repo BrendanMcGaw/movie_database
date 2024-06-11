@@ -11,7 +11,7 @@ type MovieProperties = {
     directors: string;
     actors: string;
     rating: number;
-    genre: string;
+    genres: string;
     reviews: string;
     trailer: string;
     whereToWatch: string;
@@ -21,7 +21,14 @@ const addMovie = (
     description: string,
     runtime: number,
     year: number,
-    poster: string
+    poster: string,
+    directors: string,
+    actors: string,
+    rating: number,
+    genre: string,
+    reviews: string,
+    trailer: string,
+    whereToWatch: string
 ) => {
     return db("movies").insert({
         title: title,
@@ -29,6 +36,13 @@ const addMovie = (
         runtime: runtime,
         year: year,
         poster: poster,
+        directors: directors,
+        actors: actors,
+        rating: rating,
+        genre: genre,
+        reviews: reviews,
+        trailer: trailer,
+        whereToWatch: whereToWatch,
     });
 };
 

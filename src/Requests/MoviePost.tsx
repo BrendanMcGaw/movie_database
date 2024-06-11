@@ -25,11 +25,11 @@ export type Movie = {
     title: string;
     description: string;
     runtime: number;
-    year: number;
+    year: number | undefined;
     poster: string | undefined;
     apiDescription: string;
     releaseYear: number | undefined;
-    genres: string;
+    genres: string[];
     directors: string[] | undefined;
     actors: string[];
     whereToWatch: string[] | undefined;
