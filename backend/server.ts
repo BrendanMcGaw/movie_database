@@ -1,7 +1,8 @@
-import { Request, Response } from "express"; // Have to import the types from express in order to allocate types for the express functions.
+import { Request, Response } from "express";
+require("dotenv").config(); // Have to import the types from express in order to allocate types for the express functions.
 export const express = require("express");
 const app = express();
-const dotenv = require("dotenv").config(); // Had to move my .env file into my backend directory. Fuck me.
+// Had to move my .env file into my backend directory. Fuck me.
 const cors = require("cors"); // required for backend environment variables.
 const {
     addMovie,

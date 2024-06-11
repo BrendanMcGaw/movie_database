@@ -1,5 +1,6 @@
 // basically our connection string for our query builder knex to the postgres database image hosted on docker.
 // TODO: Set the rest of these details in .env file
+// TODO: Fix not being able to do migrations
 module.exports = {
     development: {
         client: "pg",

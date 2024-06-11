@@ -2,7 +2,20 @@ import { db } from "./knex/db";
 // const db = require("./knex/db.ts");
 
 type MovieId = { id: number };
-
+type MovieProperties = {
+    title: string;
+    description: string;
+    runtime: number;
+    year: number;
+    poster: string;
+    directors: string;
+    actors: string;
+    rating: number;
+    genre: string;
+    reviews: string;
+    trailer: string;
+    whereToWatch: string;
+};
 const addMovie = (
     title: string,
     description: string,

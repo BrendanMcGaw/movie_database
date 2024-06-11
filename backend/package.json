@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node server.ts",
         "dev": "nodemon -L server.ts ",
-        "migrate": "knex migrate:latest --env development --knexfile database/knexfile.ts",
+        "migrate": "knex migrate:latest --env development --knexfile ./database/knexfile.ts",
         "seed": "knex seed:run"
     },
     "keywords": [],
