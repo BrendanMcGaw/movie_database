@@ -27,4 +27,13 @@ export type Movie = {
     runtime: number;
     year: number;
     poster: string | undefined;
+    apiDescription: string;
+    releaseYear: number | undefined;
+    genres: string;
+    directors: string[] | undefined;
+    actors: string[];
+    whereToWatch: string[] | undefined;
+    trailer: string;
+    rating: number;
+    reviews: string[];
 };
