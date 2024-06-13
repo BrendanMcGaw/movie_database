@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
-    position: relative;
+    position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     background-color: #650000;
     color: white;
