@@ -3,7 +3,6 @@ import { Movie, postMovies } from "../Requests/MoviePost";
 import { updateMovieFetch } from "../Requests/UpdateMovie";
 import { SubmitButton } from "./Buttons/Buttons";
 import * as streamingAvailability from "streaming-availability";
-import { clear } from "console";
 
 export type MovieFormProps = {
     updateMode: boolean;
@@ -17,6 +16,7 @@ type MovieDetails = {
     year: number | undefined;
     description: string;
     poster: string | undefined;
+    backdropPoster: string | undefined;
     apiDescription: string;
     releaseYear: number | undefined;
     genres: string[];
@@ -57,6 +57,7 @@ const GetThatPoster = async (movieDetails: MovieDetails) => {
         console.log(JSON.stringify(data, null, 4));
         console.log(data[0].imageSet.verticalPoster.w600);
         movieDetails.poster = data[0].imageSet.verticalPoster.w600;
+        movieDetails.backdropPoster = data[0].imageSet.horizontalBackdrop.w1080;
         if (movieDetails.description === "") {
             movieDetails.description = data[0].overview;
         }
@@ -92,6 +93,7 @@ export const MovieForm = ({
         runtime: 0,
         year: 0,
         poster: "",
+        backdropPoster: "",
         apiDescription: "",
         releaseYear: 0,
         genres: [],
