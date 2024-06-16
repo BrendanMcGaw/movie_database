@@ -57,7 +57,7 @@ const GetThatPoster = async (movieDetails: MovieDetails) => {
         console.log(JSON.stringify(data, null, 4));
         console.log(data[0].imageSet.verticalPoster.w600);
         movieDetails.poster = data[0].imageSet.verticalPoster.w600;
-        movieDetails.backdropPoster = data[0].imageSet.horizontalBackdrop.w1080;
+        movieDetails.backdropPoster = data[0].imageSet.horizontalPoster.w1080; // TODO: Might change this to horizontalBackdrop
         if (movieDetails.description === "") {
             movieDetails.description = data[0].overview;
         }
