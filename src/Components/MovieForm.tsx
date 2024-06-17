@@ -16,7 +16,7 @@ type MovieDetails = {
     year: number | undefined;
     description: string;
     poster: string | undefined;
-    backdropPoster: string | undefined;
+    horizontalBackdrop: string | undefined;
     apiDescription: string;
     releaseYear: number | undefined;
     genres: string[];
@@ -57,22 +57,31 @@ const GetThatPoster = async (movieDetails: MovieDetails) => {
         console.log(JSON.stringify(data, null, 4));
         console.log(data[0].imageSet.verticalPoster.w600);
         movieDetails.poster = data[0].imageSet.verticalPoster.w600;
-        movieDetails.backdropPoster = data[0].imageSet.horizontalPoster.w1080; // TODO: Might change this to horizontalBackdrop
-        if (movieDetails.description === "") {
-            movieDetails.description = data[0].overview;
+        if (data[0].imageSet.horizontalBackdrop?.w1440) {
+            movieDetails.horizontalBackdrop =
+                data[0].imageSet.horizontalBackdrop?.w1440;
+        } else if (!data[0].imageSet.horizontalBackdrop?.w1440) {
+            movieDetails.horizontalBackdrop =
+                data[0].imageSet.horizontalPoster.w1440;
+        } else if (!data[0].imageSet.horizontalPoster.w1440) {
+            movieDetails.horizontalBackdrop =
+                data[0].imageSet.horizontalPoster.w1080;
+            if (movieDetails.description === "") {
+                movieDetails.description = data[0].overview;
+            }
+            movieDetails.apiDescription = data[0].overview;
+            if (movieDetails.year === 0) {
+                movieDetails.year = data[0].releaseYear;
+            }
+            // movieDetails.genres = data[0].genres;
+            movieDetails.directors = data[0].directors;
+            movieDetails.actors = data[0].cast;
+            // movieDetails.whereToWatch = data[0].streamingOptions.au[i]; iterate through each item in the array and find the name and url to get to the streaming service. REVIEW LOGS. TODO:Prooving to be a bit difficult to get this to work.
+            // movieDetails.trailer = data[0].trailer; TODO:This will have to be obtained from a different API
+            movieDetails.rating = data[0].rating;
+            console.log(movieDetails.directors);
+            console.log(movieDetails.actors);
         }
-        movieDetails.apiDescription = data[0].overview;
-        if (movieDetails.year === 0) {
-            movieDetails.year = data[0].releaseYear;
-        }
-        // movieDetails.genres = data[0].genres;
-        movieDetails.directors = data[0].directors;
-        movieDetails.actors = data[0].cast;
-        // movieDetails.whereToWatch = data[0].streamingOptions.au[i]; iterate through each item in the array and find the name and url to get to the streaming service. REVIEW LOGS. TODO:Prooving to be a bit difficult to get this to work.
-        // movieDetails.trailer = data[0].trailer; TODO:This will have to be obtained from a different API
-        movieDetails.rating = data[0].rating;
-        console.log(movieDetails.directors);
-        console.log(movieDetails.actors);
     } catch (error) {
         console.error(error);
     }
@@ -93,7 +102,7 @@ export const MovieForm = ({
         runtime: 0,
         year: 0,
         poster: "",
-        backdropPoster: "",
+        horizontalBackdrop: "",
         apiDescription: "",
         releaseYear: 0,
         genres: [],

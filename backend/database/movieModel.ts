@@ -2,12 +2,13 @@ import { db } from "./knex/db";
 // const db = require("./knex/db.ts");
 
 type MovieId = { id: number };
-type MovieProperties = {
+export type MovieProperties = {
     title: string;
     description: string;
     runtime: number;
     year: number;
     poster: string;
+    horizontalBackdrop: string;
     directors: string;
     actors: string;
     rating: number;
@@ -22,6 +23,7 @@ const addMovie = (
     runtime: number,
     year: number,
     poster: string,
+    horizontalBackdrop: string,
     directors: string,
     actors: string,
     rating: number,
@@ -36,6 +38,7 @@ const addMovie = (
         runtime: runtime,
         year: year,
         poster: poster,
+        horizontalBackdrop: horizontalBackdrop,
         directors: directors,
         actors: actors,
         rating: rating,

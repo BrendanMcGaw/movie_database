@@ -36,28 +36,42 @@ export const MoviePage = () => {
                     .replace("{", "")
                     .replace("}", "")
                     .replace(/"/g, "");
-                return <p key={actor}>{actor}</p>;
+                return (
+                    <p className="actors" key={actor}>
+                        {actor}
+                    </p>
+                );
             });
         }
     };
     return (
-        <div className="pageContent">
+        <div className="pageContentContainer">
+            {/* I broke this at some point, I think I used the same className in movieList. Fix tomorrow. */}
             {movie.map((movieData) => (
-                <div key={movieData.id}>
-                    <h1>{movieData.title}</h1>
-                    <img src={movieData.poster} alt="" />
-                    <div className="descriptionContainer">
-                        <h3>{movieData.description}</h3>
-                    </div>
-                    <p>{movieData.runtime}</p>
-                    <p>{movieData.year}</p>
-                    <div className="actorsContainer">
-                        <h1 className="actorsHeading">Cast</h1>
-                        <p className="actorsNames">{ListActors()}</p>
-                    </div>
-                    <p>{movieData.genres}</p>
-                    <p>{movieData.directors}</p>
-                    <p>{movieData.rating}</p>
+                <div key={movieData.id} className="pageContent">
+                    <img
+                        className="movieGlow"
+                        src={movieData.horizontalBackdrop}
+                        alt=""
+                    />
+                    <img
+                        className="backdropImage"
+                        src={movieData.horizontalBackdrop}
+                        alt=""
+                    />
+                    <section className="contentOnImage">
+                        <h1>{movieData.title}</h1>
+                        <h3 className="description">{movieData.description}</h3>
+                        <p>{movieData.runtime}</p>
+                        <p>{movieData.year}</p>
+                        <div className="actorsContainer">
+                            <h1 className="actorsHeading">Cast</h1>
+                            {ListActors()}
+                        </div>
+                        <p>{movieData.genres}</p>
+                        <p>{movieData.directors}</p>
+                        <p>{movieData.rating}</p>
+                    </section>
                 </div>
             ))}
         </div>

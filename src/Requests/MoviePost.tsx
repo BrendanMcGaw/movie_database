@@ -27,7 +27,7 @@ export type Movie = {
     runtime: number;
     year: number | undefined;
     poster: string | undefined;
-    backdropPoster: string | undefined;
+    horizontalBackdrop: string | undefined;
     apiDescription: string;
     releaseYear: number | undefined;
     genres: string[];
