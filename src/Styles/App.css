@@ -70,12 +70,26 @@ input {
     color: #61dafb;
 }
 
+@keyframes cardSplit {
+    /* Animates my movie cards to split apart upon loading the page. */
+    0% {
+        column-gap: 0px;
+    }
+    100% {
+        column-gap: 50px;
+    }
+}
+
 .pageContentContainer {
     display: flex;
+    flex-wrap: wrap;
     flex: 1;
     width: 90%;
-
+    column-gap: 50px;
+    row-gap: 50px;
     justify-content: center;
+    will-change: column-gap;
+    animation: 2s ease-out cardSplit;
 }
 
 header {

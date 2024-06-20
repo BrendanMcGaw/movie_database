@@ -1,14 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
 /* Probably create the whole styles for all of this Movie Card as a styled component. */
 /* Set the buttons separately. */
-.pageContentContainer {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 50px;
-    row-gap: 50px;
-}
 
 .cardContainer {
     display: flex;
