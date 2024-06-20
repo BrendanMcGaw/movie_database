@@ -75,6 +75,18 @@ input {
     0% {
         column-gap: 0px;
     }
+    20% {
+        column-gap: 10px;
+    }
+    40% {
+        column-gap: 20px;
+    }
+    60% {
+        column-gap: 30px;
+    }
+    80% {
+        column-gap: 40px;
+    }
     100% {
         column-gap: 50px;
     }
@@ -89,7 +101,8 @@ input {
     row-gap: 50px;
     justify-content: center;
     will-change: column-gap;
-    animation: 2s ease-out cardSplit;
+    animation: 1s linear cardSplit;
+    padding-bottom: 15vh;
 }
 
 header {
