@@ -18,7 +18,7 @@ export const AddMovieButton: React.FC<MovieFormProps> = ({
                 <AddMovieButtonStyle
                     onClick={() => setShowAddMovie(!showAddMovie)}
                 >
-                    {showAddMovie ? "" : ""} Add Movie
+                    {showAddMovie ? "Close Movie Form" : "Add Movie"}
                 </AddMovieButtonStyle>
             </AddMovieButtonHeaderStyle>
             {showAddMovie ? (

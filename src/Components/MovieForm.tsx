@@ -58,12 +58,15 @@ const GetThatPoster = async (movieDetails: MovieDetails) => {
         console.log(data[0].imageSet.verticalPoster.w600);
         movieDetails.poster = data[0].imageSet.verticalPoster.w600;
         if (data[0].imageSet.horizontalBackdrop?.w1440) {
+            // If the horizontalBackdrop is available at 1440p, use that.
             movieDetails.horizontalBackdrop =
                 data[0].imageSet.horizontalBackdrop?.w1440;
         } else if (!data[0].imageSet.horizontalBackdrop?.w1440) {
+            // If the horizontalBackdrop is not available at 1440p, use the 1080p version.
             movieDetails.horizontalBackdrop =
                 data[0].imageSet.horizontalPoster.w1440;
         } else if (!data[0].imageSet.horizontalPoster.w1440) {
+            // If the horizontalPoster is not available at 1440p, use the 1080p version.
             movieDetails.horizontalBackdrop =
                 data[0].imageSet.horizontalPoster.w1080;
             if (movieDetails.description === "") {

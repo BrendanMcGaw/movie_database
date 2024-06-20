@@ -45,10 +45,10 @@ export const MoviePage = () => {
         }
     };
     return (
-        <div className="pageContentContainer">
+        <div className="moviePageContentContainer">
             {/* I broke this at some point, I think I used the same className in movieList. Fix tomorrow. */}
             {movie.map((movieData) => (
-                <div key={movieData.id} className="pageContent">
+                <div key={movieData.id} className="moviePageContent">
                     <img
                         className="movieGlow"
                         src={movieData.horizontalBackdrop}

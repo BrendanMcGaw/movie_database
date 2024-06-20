@@ -8,6 +8,15 @@ body {
 }
 /* Might want to change this font later. */
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
 .App {
     position: relative;
     height: 100vh;
@@ -16,7 +25,7 @@ body {
 
 /* TODO: Deal with the testing of this input later, different inputs require different styles. Is this taking over the others? */
 input {
-    width: 500px;
+    width: 596px;
     height: 25px;
     padding: 0;
     margin: 0;
@@ -25,15 +34,16 @@ input {
 /* TODO: This should be a separate styled component, not styled in my App.css */
 .formContainer {
     display: flex;
-    position: fixed;
-    top: 0%;
-    left: 36.6%;
+    position: absolute;
+    top: 25%;
+    justify-content: center;
     background-color: rgb(29, 29, 29);
     flex: 1;
     flex-direction: column;
     z-index: 5;
     gap: 2rem;
     border: 5px solid rgb(151, 146, 146);
+    width: 600px;
 }
 
 /* TODO: This should be a separate styled component, not styled in my App.css. Related to header and its positioning. */
@@ -54,16 +64,6 @@ input {
     padding-top: 15px;
     padding-bottom: 15px;
     color: #e0e1dd;
-}
-
-main {
-    display: flex;
-    padding-bottom: 10vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
 }
 
 .App-link {
