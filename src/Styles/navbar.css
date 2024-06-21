@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap");
 
 .navbarContainer {
-    background-color: #0f0606;
+    background-color: transparent;
     font-family: "Inknut Antiqua", serif;
     color: #e0e1dd;
     display: grid;

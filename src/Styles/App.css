@@ -101,7 +101,7 @@ input {
     row-gap: 50px;
     justify-content: center;
     will-change: column-gap;
-    animation: 1s linear cardSplit;
+    animation: 0.5s linear cardSplit;
     padding-bottom: 15vh;
 }
 
