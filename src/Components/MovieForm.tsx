@@ -73,22 +73,22 @@ const GetThatPoster = async (movieDetails: MovieDetails) => {
             // If the horizontalPoster is not available at 1440p, use the 1080p version.
             movieDetails.horizontalBackdrop =
                 data[0].imageSet.horizontalPoster.w1080;
-            if (movieDetails.description === "") {
-                movieDetails.description = data[0].overview;
-            }
-            movieDetails.apiDescription = data[0].overview;
-            if (movieDetails.year === 0) {
-                movieDetails.year = data[0].releaseYear;
-            }
-            // movieDetails.genres = data[0].genres;
-            movieDetails.directors = data[0].directors;
-            movieDetails.actors = data[0].cast;
-            // movieDetails.whereToWatch = data[0].streamingOptions.au[i]; iterate through each item in the array and find the name and url to get to the streaming service. REVIEW LOGS. TODO:Prooving to be a bit difficult to get this to work.
-            // movieDetails.trailer = data[0].trailer; TODO:This will have to be obtained from a different API
-            movieDetails.rating = data[0].rating;
-            movieDetails.imdbId = data[0].imdbId;
-            movieDetails.tmdbId = data[0].tmdbId;
         }
+        if (movieDetails.description === "") {
+            movieDetails.description = data[0].overview;
+        }
+        movieDetails.apiDescription = data[0].overview;
+        if (movieDetails.year === 0) {
+            movieDetails.year = data[0].releaseYear;
+        }
+        // movieDetails.genres = data[0].genres;
+        movieDetails.directors = data[0].directors;
+        movieDetails.actors = data[0].cast;
+        // movieDetails.whereToWatch = data[0].streamingOptions.au[i]; iterate through each item in the array and find the name and url to get to the streaming service. REVIEW LOGS. TODO:Prooving to be a bit difficult to get this to work.
+        // movieDetails.trailer = data[0].trailer; TODO:This will have to be obtained from a different API
+        movieDetails.rating = data[0].rating;
+        movieDetails.imdbId = data[0].imdbId;
+        movieDetails.tmdbId = data[0].tmdbId;
     } catch (error) {
         console.error(error);
     }
