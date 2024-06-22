@@ -33,6 +33,10 @@ app.post("/", async (req: Request, res: Response) => {
             reviews,
             trailer,
             whereToWatch,
+            imdbId,
+            tmdbId,
+            youtubeTrailer,
+            youtubeTrailerThumbnail,
         } = req.body; // requests the body of text provided to the variables by the front end
         console.log(req.body); // logs the requested body information as an object.
         const result = await addMovie(
@@ -48,7 +52,11 @@ app.post("/", async (req: Request, res: Response) => {
             genres,
             reviews,
             trailer,
-            whereToWatch
+            whereToWatch,
+            imdbId,
+            tmdbId,
+            youtubeTrailer,
+            youtubeTrailerThumbnail
         ); // Uses the function from movieModel and assigns thet body of text to each variable to turn it into a movie object.
         res.status(201).json({ message: "Movie added succesfully", result }); // Sends the resulting movie object to the database.
     } catch (error) {

@@ -3,25 +3,26 @@
 .navbarContainer {
     background-color: transparent;
     font-family: "Inknut Antiqua", serif;
-    color: #e0e1dd;
+    color: white;
+    font-weight: 600;
     display: grid;
     width: 100%;
-    grid-template-rows: 10vh;
+    grid-template-rows: 8vh;
     grid-template-columns: 20vw 35vw 6vw 6vw 6vw 6vw 7.5vw 6vw;
     justify-content: center;
     align-items: center;
 
-    border-bottom: 2px solid #490000; /* the 2 px extra for the home page height. */
+    border-bottom: 5px solid #490000; /* the 2 px extra for the home page height. */
 }
 
 .pageTitle {
-    font-size: 2vw;
+    font-size: 1.5vw;
     text-decoration: inherit;
     color: inherit;
 }
 
 .navbarItem {
-    font-size: 1.2vw;
+    font-size: 1vw;
     text-decoration: inherit;
     color: inherit;
 }

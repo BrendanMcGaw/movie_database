@@ -3,7 +3,7 @@ import { Movie, postMovies } from "../Requests/MoviePost";
 import { updateMovieFetch } from "../Requests/UpdateMovie";
 import { SubmitButton } from "./Buttons/Buttons";
 import * as streamingAvailability from "streaming-availability";
-
+// import { GetMovieTrailers } from "../Requests/GetMovieTrailers";
 export type MovieFormProps = {
     updateMode: boolean;
     movieId: number;
@@ -27,6 +27,10 @@ type MovieDetails = {
     rating: number;
     reviews: string[];
     runtime: number;
+    imdbId: string;
+    tmdbId: string;
+    youtubeTrailer: string;
+    youtubeTrailerThumbnail: string;
 };
 
 // This works! I don't know why, I don't know how, but it works. I'm not going to touch it.
@@ -82,12 +86,25 @@ const GetThatPoster = async (movieDetails: MovieDetails) => {
             // movieDetails.whereToWatch = data[0].streamingOptions.au[i]; iterate through each item in the array and find the name and url to get to the streaming service. REVIEW LOGS. TODO:Prooving to be a bit difficult to get this to work.
             // movieDetails.trailer = data[0].trailer; TODO:This will have to be obtained from a different API
             movieDetails.rating = data[0].rating;
-            console.log(movieDetails.directors);
-            console.log(movieDetails.actors);
+            movieDetails.imdbId = data[0].imdbId;
+            movieDetails.tmdbId = data[0].tmdbId;
         }
     } catch (error) {
         console.error(error);
     }
+    // try {
+    //     console.log(
+    //         "Checking if imdbId is even being appropriated: ",
+    //         movieDetails.imdbId
+    //     );
+    //     GetMovieTrailers(movieDetails.imdbId);
+    //     console.log(
+    //         "This is the trailer information we got from our GET reuqest: ",
+    //         GetMovieTrailers(movieDetails.imdbId)
+    //     );
+    // } catch (error) {
+    //     console.error(error);
+    // }
 };
 
 //TODO: Works majority of the time, might need to check year, if year is provided, check for release date comparison. If no year provided or it doesn't match a release date of any of the objects in the array, then return the first poster in the array.
@@ -115,6 +132,10 @@ export const MovieForm = ({
         trailer: "",
         rating: 0,
         reviews: [],
+        imdbId: "",
+        tmdbId: "",
+        youtubeTrailer: "",
+        youtubeTrailerThumbnail: "",
     });
     // useFetchMoviePoster(movieDetails, { findPoster });
 

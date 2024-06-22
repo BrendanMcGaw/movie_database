@@ -37,7 +37,7 @@ export const MoviePage = () => {
                     .replace("}", "")
                     .replace(/"/g, "");
                 return (
-                    <p className="actors" key={actor}>
+                    <p className="movieActors" key={actor}>
                         {actor}
                     </p>
                 );
@@ -54,24 +54,34 @@ export const MoviePage = () => {
                         src={movieData.horizontalBackdrop}
                         alt=""
                     />
-                    <img
+                    {/* <img
                         className="backdropImage"
                         src={movieData.horizontalBackdrop}
                         alt=""
-                    />
-                    <section className="contentOnImage">
-                        <h1>{movieData.title}</h1>
-                        <h3 className="description">{movieData.description}</h3>
-                        <p>{movieData.runtime}</p>
-                        <p>{movieData.year}</p>
-                        <div className="actorsContainer">
-                            <h1 className="actorsHeading">Cast</h1>
-                            {ListActors()}
-                        </div>
-                        <p>{movieData.genres}</p>
-                        <p>{movieData.directors}</p>
-                        <p>{movieData.rating}</p>
+                    /> */}
+
+                    <h1 className="movieTitle">{movieData.title}</h1>
+
+                    <section className="movieTitleSection">
+                        <h3 className="movieDescription">
+                            {movieData.description}
+                        </h3>
+                        <section className="runtimeAndYearContainer">
+                            <p className="movieRuntime">
+                                {"Runtime: " + movieData.runtime + " minutes"}
+                            </p>
+                            <p className="movieYear">
+                                {"Release Year: " + movieData.year}
+                            </p>
+                        </section>
                     </section>
+                    <div className="movieActorsContainer">
+                        <h1 className="movieActorsHeading">Cast</h1>
+                        {ListActors()}
+                    </div>
+                    <p className="movieGenres">{movieData.genres}</p>
+                    <p className="movieDirectors">{movieData.directors}</p>
+                    <p className="movieRating">{movieData.rating}</p>
                 </div>
             ))}
         </div>

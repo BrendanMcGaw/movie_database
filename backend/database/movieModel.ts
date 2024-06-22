@@ -16,6 +16,10 @@ export type MovieProperties = {
     reviews: string;
     trailer: string;
     whereToWatch: string;
+    imdbId: string;
+    tmdbId: string;
+    youtubeTrailer: string;
+    youtubeTrailerThumbnail: string;
 };
 const addMovie = (
     title: string,
@@ -30,7 +34,11 @@ const addMovie = (
     genre: string,
     reviews: string,
     trailer: string,
-    whereToWatch: string
+    whereToWatch: string,
+    imdbId: string,
+    tmdbId: string,
+    youtubeTrailer: string,
+    youtubeTrailerThumbnail: string
 ) => {
     return db("movies").insert({
         title: title,
@@ -46,6 +54,10 @@ const addMovie = (
         reviews: reviews,
         trailer: trailer,
         whereToWatch: whereToWatch,
+        imdbId: imdbId,
+        tmdbId: tmdbId,
+        youtubeTrailer: youtubeTrailer,
+        youtubeTrailerThumbnail: youtubeTrailerThumbnail,
     });
 };
 

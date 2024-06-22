@@ -37,4 +37,8 @@ export type Movie = {
     trailer: string;
     rating: number;
     reviews: string[];
+    imdbId: string;
+    tmdbId: string;
+    youtubeTrailer: string;
+    youtubeTrailerThumbnail: string;
 };
