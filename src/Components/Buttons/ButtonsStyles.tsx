@@ -57,6 +57,8 @@ export const AddMovieButtonStyle = styled.button`
     background-color: #e0e1dd;
     height: 75px;
     width: 600px;
+    position: absolute;
+    top: 105px;
     font-size: 30px;
     font-weight: bolder;
     box-shadow: -1px 2px 15px black;

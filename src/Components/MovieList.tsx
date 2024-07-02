@@ -96,14 +96,14 @@ export const MovieList: React.FC = () => {
     return (
         <>
             <div className="pageContentContainer">
-                {loading ? <p>Loading....</p> : null}{" "}
-                {/* Added a loading bar to the movie browser */}
                 <AddMovieButton
                     updateMode={false}
                     movieId={0}
                     showAddMovie={true}
                     moviePoster=""
                 />
+                {loading ? <p>Loading....</p> : null}{" "}
+                {/* Added a loading bar to the movie browser */}
                 {movieCardLoaded &&
                     displayedMovies.map((movie) => (
                         <MovieCard
