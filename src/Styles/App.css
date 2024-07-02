@@ -5,17 +5,32 @@ body {
     font-weight: 400;
     font-style: normal;
     background-color: #0f0606;
-    animation: fade-in 3s;
+    /* animation: fade-in 3s; */
 }
 
 /* Currently creates a weird outline around my main content on the homepage. */
-@keyframes fade-in {
+/* @keyframes fade-in {
     from {
         opacity: 0;
     }
     to {
         opacity: 100;
     }
+} */
+
+.fade-enter {
+    opacity: 0;
+}
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+}
+.fade-exit {
+    opacity: 1;
+}
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
 }
 /* Might want to change this font later. */
 
