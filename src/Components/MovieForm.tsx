@@ -3,7 +3,7 @@ import { Movie, postMovies } from "../Requests/MoviePost";
 import { updateMovieFetch } from "../Requests/UpdateMovie";
 import { SubmitButton } from "./Buttons/Buttons";
 import * as streamingAvailability from "streaming-availability";
-// import { GetMovieTrailers } from "../Requests/GetMovieTrailers";
+import { GetMovieTrailers } from "../Requests/GetMovieTrailers";
 export type MovieFormProps = {
     updateMode: boolean;
     movieId: number;
@@ -92,19 +92,21 @@ const GetThatPoster = async (movieDetails: MovieDetails) => {
     } catch (error) {
         console.error(error);
     }
-    // try {
-    //     console.log(
-    //         "Checking if imdbId is even being appropriated: ",
-    //         movieDetails.imdbId
-    //     );
-    //     GetMovieTrailers(movieDetails.imdbId);
-    //     console.log(
-    //         "This is the trailer information we got from our GET reuqest: ",
-    //         GetMovieTrailers(movieDetails.imdbId)
-    //     );
-    // } catch (error) {
-    //     console.error(error);
-    // }
+    try {
+        console.log(
+            "Checking if imdbId is even being appropriated: ",
+            movieDetails.imdbId
+        );
+        movieDetails.youtubeTrailer = await GetMovieTrailers(
+            movieDetails.imdbId
+        );
+        console.log(
+            "This is the trailer information we got from our GET reuqest: ",
+            movieDetails.youtubeTrailer
+        );
+    } catch (error) {
+        console.error(error);
+    }
 };
 
 //TODO: Works majority of the time, might need to check year, if year is provided, check for release date comparison. If no year provided or it doesn't match a release date of any of the objects in the array, then return the first poster in the array.

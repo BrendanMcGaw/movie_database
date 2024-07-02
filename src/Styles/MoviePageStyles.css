@@ -77,12 +77,13 @@
     box-shadow: 0 0 155px 8px black;
 } */
 
-.movieGlow {
+.backgroundImage {
     /* Gives our moviePage background image a nice effect that blends the colors into the theme of the page. */
     position: absolute;
     z-index: -2;
     right: 0px;
-    filter: blur(15px) saturate(125%) brightness(125%);
+    top: -12px;
+    filter: blur(4px) saturate(125%) brightness(125%);
     opacity: 55%;
     width: 100vw;
     height: 100vh;

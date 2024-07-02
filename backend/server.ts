@@ -1,9 +1,25 @@
 import { Request, Response } from "express";
 require("dotenv").config(); // Have to import the types from express in order to allocate types for the express functions.
 export const express = require("express");
+const cors = require("cors"); // required for backend environment variables.
 const app = express();
 // Had to move my .env file into my backend directory. Fuck me.
-const cors = require("cors"); // required for backend environment variables.
+
+// const corsOptions = {
+//     origin: "*",
+//     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type"],
+//     credentials: true,
+// };
+app.use(cors());
+// app.options("*", cors(corsOptions));
+// app.use(cors({ origin: true }));
+
+// app.get('/shows', (req, res) => {
+//     // Your existing code
+//     res.json({ message: 'CORS enabled for all origins!' });
+// });
+
 const {
     addMovie,
     getAllMovies,
@@ -14,7 +30,7 @@ const {
 } = require("./database/movieModel.ts");
 
 app.use(express.json());
-app.use(cors({ origin: true }));
+
 const port = process.env.PORT;
 
 app.post("/", async (req: Request, res: Response) => {

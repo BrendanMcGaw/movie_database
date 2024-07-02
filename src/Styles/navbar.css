@@ -11,7 +11,7 @@
     grid-template-columns: 20vw 35vw 6vw 6vw 6vw 6vw 7.5vw 6vw;
     justify-content: center;
     align-items: center;
-
+    grid-row: 1;
     border-bottom: 5px solid #490000; /* the 2 px extra for the home page height. */
 }
 

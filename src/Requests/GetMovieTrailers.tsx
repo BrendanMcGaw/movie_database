@@ -1,15 +1,25 @@
-// export async function GetMovieTrailers(imdbId: string) {
-//     const response = await fetch(
-//         `http://api.kinocheck.de/shows?tmdb_id=${imdbId}`,
-//         {
-//             method: "GET",
-//             mode: "cors",
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//         }
-//     );
-//     return response.json();
-// }
+export async function GetMovieTrailers(imdbId: string) {
+    try {
+        const response = await fetch(
+            `https://api.kinocheck.de/movies?imdb_id=${imdbId}`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "Localhost:3000",
+                },
+            }
+        );
 
-export {};
+        if (!response.ok) {
+            throw new Error(`Failed to get trailer info ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("This is the response for the trailer info: ", data);
+        return data;
+    } catch (error) {
+        console.error("Error fetching trailer info", error);
+        throw error;
+    }
+}

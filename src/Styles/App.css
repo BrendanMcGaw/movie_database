@@ -15,10 +15,14 @@ main {
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    grid-row: 2;
+    width: 99vw; /* With this at 100vw it adds a horizontal scrollbar to allow you to see the vertical scrollbar. Could use overflow-x: hidden but that hides the bottom of the vertical scrollbar. */
 }
 
 .App {
-    position: relative;
+    display: grid;
+    grid-template-rows: 8vh auto auto;
+    grid-template-columns: auto;
     height: 100vh;
     text-align: center;
 }
@@ -118,6 +122,7 @@ header {
     width: 100%;
     justify-content: center;
     flex: 1;
+    left: 0;
 }
 
 .paginationStyle {

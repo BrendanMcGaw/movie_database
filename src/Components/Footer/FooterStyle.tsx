@@ -16,6 +16,7 @@ export const StyledFooter = styled.footer`
     justify-content: center;
     align-items: center;
     font-size: 1.4rem;
+    grid-row: 3;
 
     a {
         text-decoration: none;

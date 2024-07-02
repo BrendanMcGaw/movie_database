@@ -50,7 +50,7 @@ export const MoviePage = () => {
             {movie.map((movieData) => (
                 <div key={movieData.id} className="moviePageContent">
                     <img
-                        className="movieGlow"
+                        className="backgroundImage"
                         src={movieData.horizontalBackdrop}
                         alt=""
                     />
@@ -59,9 +59,10 @@ export const MoviePage = () => {
                         src={movieData.horizontalBackdrop}
                         alt=""
                     /> */}
-
+                    <a href={movieData.movieTrailer}>
+                        {movieData.movieTrailerThumbnail}
+                    </a>
                     <h1 className="movieTitle">{movieData.title}</h1>
-
                     <section className="movieTitleSection">
                         <h3 className="movieDescription">
                             {movieData.description}
