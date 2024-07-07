@@ -23,3 +23,5 @@ export async function GetMovieTrailers(imdbId: string) {
         throw error;
     }
 }
+
+// Convert all this to the YouTube API to grab trailers, bit of work to come.

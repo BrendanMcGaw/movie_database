@@ -68,9 +68,14 @@ export const MoviePage = () => {
                             {movieData.description}
                         </h3>
                         <section className="runtimeAndYearContainer">
-                            <p className="movieRuntime">
-                                {"Runtime: " + movieData.runtime + " minutes"}
-                            </p>
+                            {movieData.runtime != 0 && (
+                                <p className="movieRuntime">
+                                    {"Runtime: " +
+                                        movieData.runtime +
+                                        " minutes"}
+                                </p> // Conditional that checks if the user entered a runtime, if not. Don't display.
+                            )}
+
                             <p className="movieYear">
                                 {"Release Year: " + movieData.year}
                             </p>
