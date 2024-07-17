@@ -5,6 +5,7 @@ import "../Styles/MoviePageStyles.css";
 export const MoviePage = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState<any[]>([]);
+    console.log("Movie Data: ", movie);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,16 +25,69 @@ export const MoviePage = () => {
 
         fetchData();
     }, [id]);
+    const movieActors = movie.map((movieData) => movieData.actors);
+    let splitNames = movieActors.toString().split(",");
+    console.log("Split Names: ", splitNames);
 
+    const ListActors = () => {
+        while (splitNames.length > 0) {
+            return splitNames.map((actor) => {
+                actor = actor
+                    .replace("{", "")
+                    .replace("}", "")
+                    .replace(/"/g, "");
+                return (
+                    <p className="movieActors" key={actor}>
+                        {actor}
+                    </p>
+                );
+            });
+        }
+    };
     return (
-        <div className="pageContent">
+        <div className="moviePageContentContainer">
+            {/* I broke this at some point, I think I used the same className in movieList. Fix tomorrow. */}
             {movie.map((movieData) => (
-                <div key={movieData.id}>
-                    <img src={movieData.poster} alt="" />
-                    <h1>{movieData.title}</h1>
-                    <h3>{movieData.description}</h3>
-                    <p>{movieData.runtime}</p>
-                    <p>{movieData.year}</p>
+                <div key={movieData.id} className="moviePageContent">
+                    <img
+                        className="backgroundImage"
+                        src={movieData.horizontalBackdrop}
+                        alt=""
+                    />
+                    {/* <img
+                        className="backdropImage"
+                        src={movieData.horizontalBackdrop}
+                        alt=""
+                    /> */}
+                    <a href={movieData.movieTrailer}>
+                        {movieData.movieTrailerThumbnail}
+                    </a>
+                    <h1 className="movieTitle">{movieData.title}</h1>
+                    <section className="movieTitleSection">
+                        <h3 className="movieDescription">
+                            {movieData.description}
+                        </h3>
+                        <section className="runtimeAndYearContainer">
+                            {movieData.runtime != 0 && (
+                                <p className="movieRuntime">
+                                    {"Runtime: " +
+                                        movieData.runtime +
+                                        " minutes"}
+                                </p> // Conditional that checks if the user entered a runtime, if not. Don't display.
+                            )}
+
+                            <p className="movieYear">
+                                {"Release Year: " + movieData.year}
+                            </p>
+                        </section>
+                    </section>
+                    <div className="movieActorsContainer">
+                        <h1 className="movieActorsHeading">Cast</h1>
+                        {ListActors()}
+                    </div>
+                    <p className="movieGenres">{movieData.genres}</p>
+                    <p className="movieDirectors">{movieData.directors}</p>
+                    <p className="movieRating">{movieData.rating}</p>
                 </div>
             ))}
         </div>

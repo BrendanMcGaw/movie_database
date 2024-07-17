@@ -5,16 +5,57 @@ body {
     font-weight: 400;
     font-style: normal;
     background-color: #0f0606;
+    animation: fade-in 3s;
+}
+
+/*Currently creates a weird outline around my main content on the homepage. */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
+}
+
+.fade-enter {
+    opacity: 0;
+}
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+}
+.fade-exit {
+    opacity: 1;
+}
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
 }
 /* Might want to change this font later. */
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    grid-row: 2;
+    width: 99vw; /* With this at 100vw it adds a horizontal scrollbar to allow you to see the vertical scrollbar. Could use overflow-x: hidden but that hides the bottom of the vertical scrollbar. */
+}
+
 .App {
+    display: grid;
+    grid-template-rows: 8vh auto auto;
+    grid-template-columns: auto;
+    height: 100vh;
     text-align: center;
 }
 
 /* TODO: Deal with the testing of this input later, different inputs require different styles. Is this taking over the others? */
 input {
-    width: 500px;
+    width: 596px;
     height: 25px;
     padding: 0;
     margin: 0;
@@ -23,15 +64,16 @@ input {
 /* TODO: This should be a separate styled component, not styled in my App.css */
 .formContainer {
     display: flex;
-    position: fixed;
-    top: 0%;
-    left: 36.6%;
+    position: absolute;
+    top: 25%;
+    justify-content: center;
     background-color: rgb(29, 29, 29);
     flex: 1;
     flex-direction: column;
     z-index: 5;
     gap: 2rem;
     border: 5px solid rgb(151, 146, 146);
+    width: 600px;
 }
 
 /* TODO: This should be a separate styled component, not styled in my App.css. Related to header and its positioning. */
@@ -54,24 +96,44 @@ input {
     color: #e0e1dd;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
 .App-link {
     color: #61dafb;
 }
 
+@keyframes cardSplit {
+    /* Animates my movie cards to split apart upon loading the page. */
+    0% {
+        column-gap: 0px;
+    }
+    20% {
+        column-gap: 10px;
+    }
+    40% {
+        column-gap: 20px;
+    }
+    60% {
+        column-gap: 30px;
+    }
+    80% {
+        column-gap: 40px;
+    }
+    100% {
+        column-gap: 50px;
+    }
+}
+
 .pageContentContainer {
     display: flex;
+    flex-wrap: wrap;
     flex: 1;
     width: 90%;
+    column-gap: 50px;
+    row-gap: 50px;
     justify-content: center;
+    will-change: column-gap;
+    animation-delay: 12s;
+    animation: 1.2s linear cardSplit;
+    padding-bottom: 15vh;
 }
 
 header {
@@ -79,13 +141,15 @@ header {
 }
 
 .paginationContainer {
+    position: fixed;
+    bottom: 5vh;
     display: flex;
     background-color: #2f0000;
     color: white;
     width: 100%;
     justify-content: center;
-    margin-top: 25px;
     flex: 1;
+    left: 0;
 }
 
 .paginationStyle {

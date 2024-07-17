@@ -2,12 +2,32 @@ import React, { useState, useEffect } from "react";
 import { MovieCard } from "./MovieCard";
 import { AddMovieButton } from "./Buttons/Buttons";
 import { Pagination } from "antd";
-
+import { MovieCardProps } from "../App";
 import "../Styles/App.css";
+
+// This function preloads the movie cards by loading the poster images in the background.
+const preloadMovieCards = async (movies: any[]): Promise<void> => {
+    // Create an array of promises, where each promise represents loading an image.
+    const promises = movies.map(
+        (movie) =>
+            new Promise<void>((resolve) => {
+                // Create a new Image object.
+                const img = new Image();
+                // Set the source of the image to the movie's poster URL.
+                img.src = movie.poster;
+                // When the image is loaded, resolve the promise.
+                img.onload = () => resolve();
+                img.onerror = () => resolve();
+            })
+    );
+    // Wait for all the promises to resolve.
+    await Promise.all(promises);
+};
 
 export const MovieList: React.FC = () => {
     const [movies, setMovies] = useState<any[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
+    const [movieCardLoaded, setMovieCardLoaded] = useState<boolean>(false);
     const [showUpdateMovieForm, setShowUpdateMovieForm] = useState<{
         [id: number]: boolean;
     }>({});
@@ -22,7 +42,6 @@ export const MovieList: React.FC = () => {
             ...prevState,
             [movieId]: !prevState[movieId],
         }));
-        console.log(showFullDescription);
     };
 
     const toggleUpdateForm = (movieId: number) => {
@@ -43,6 +62,10 @@ export const MovieList: React.FC = () => {
                 );
                 const data = await response.json();
                 setMovies(data);
+
+                await preloadMovieCards(data);
+                setMovieCardLoaded(true); // Sets the boolean to true after the movie cards data has been loaded.
+
                 setLoading(false);
                 console.log("after the fetch", loading);
             } catch (error) {
@@ -73,24 +96,27 @@ export const MovieList: React.FC = () => {
     return (
         <>
             <div className="pageContentContainer">
-                {loading ? <p>Loading....</p> : null}{" "}
-                {/* Added a loading bar to the movie browser */}
                 <AddMovieButton
                     updateMode={false}
                     movieId={0}
                     showAddMovie={true}
                     moviePoster=""
                 />
-                {displayedMovies.map((movie) => (
-                    <MovieCard
-                        key={movie.id} // passing key means I probably don't need to use movie.id in my actual MovieCard. Reassess wasted resources.
-                        movie={movie}
-                        showFullDescriptionHandler={showFullDescriptionHandler}
-                        toggleUpdateForm={toggleUpdateForm}
-                        showUpdateMovieForm={showUpdateMovieForm}
-                        showFullDescription={showFullDescription}
-                    />
-                ))}
+                {loading ? <p>Loading....</p> : null}{" "}
+                {/* Added a loading bar to the movie browser */}
+                {movieCardLoaded &&
+                    displayedMovies.map((movie) => (
+                        <MovieCard
+                            key={movie.id} // passing key means I probably don't need to use movie.id in my actual MovieCard. Reassess wasted resources.
+                            movie={movie}
+                            showFullDescriptionHandler={
+                                showFullDescriptionHandler
+                            }
+                            toggleUpdateForm={toggleUpdateForm}
+                            showUpdateMovieForm={showUpdateMovieForm}
+                            showFullDescription={showFullDescription}
+                        />
+                    ))}
             </div>
             {/* TODO: Separate concerns, create component from pagination. */}
             <section className="paginationContainer">

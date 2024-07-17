@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 //TODO: ADD USERS AND REVIEWS
 export const Navbar = () => {
     return (
-        <div className="navbarContainer">
+        <section className="navbarContainer">
             <Link to="/" className="pageTitle">
                 Picture Pulse
             </Link>
@@ -21,6 +21,6 @@ export const Navbar = () => {
             <nav className="navbarItem">Actors</nav>
             <nav className="navbarItem">Directors</nav>
             <nav className="navbarItem">Profile</nav>
-        </div>
+        </section>
     );
 };

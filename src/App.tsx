@@ -1,12 +1,17 @@
 import "./Styles/App.css";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { MovieList } from "./Components/MovieList";
 import { Navbar } from "./Components/Navbar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { MoviePage } from "./Components/MoviePage";
 import { HomePage } from "./Components/HomePage";
 import { SearchResultsPage } from "./Components/Search/ResultsPage";
 import { Footer } from "./Components/Footer/FooterComponent";
+import {
+    CSSTransition,
+    SwitchTransition,
+    TransitionGroup,
+} from "react-transition-group";
 // layout of overall page structure should be done here. Import components here.
 export type MovieCardProps = {
     movie: {
@@ -24,11 +29,12 @@ export type MovieCardProps = {
 };
 
 const App: React.FC = () => {
+    const location = useLocation();
     return (
         <div className="App">
             <Navbar />
             <main>
-                <Routes>
+                <Routes location={location}>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/browse-movies" element={<MovieList />} />
                     <Route path="/movie/:id" element={<MoviePage />} />

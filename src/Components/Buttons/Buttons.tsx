@@ -18,7 +18,7 @@ export const AddMovieButton: React.FC<MovieFormProps> = ({
                 <AddMovieButtonStyle
                     onClick={() => setShowAddMovie(!showAddMovie)}
                 >
-                    {showAddMovie ? "" : ""} Add Movie
+                    {showAddMovie ? "Close Movie Form" : "Add Movie"}
                 </AddMovieButtonStyle>
             </AddMovieButtonHeaderStyle>
             {showAddMovie ? (
@@ -40,7 +40,6 @@ export const SubmitButton = () => {
 // TODO: Make this a little red x in the top right corner of the card.
 // TODO: Make it hidden until :hover over card.
 export const DeleteButton = ({ movieId }: { movieId: number }) => {
-    console.log("This is the movie Id information", movieId);
     return (
         <CardButtons onClick={() => DeleteMovie(movieId)}>
             <IoTrashBin />
@@ -60,10 +59,6 @@ export const UpdateButton: React.FC<MovieCardProps> = ({
                 className="updateButton"
                 onClick={() => {
                     toggleUpdateForm(movie.id);
-                    console.log(
-                        "This is the update movie button id number",
-                        movie.id
-                    );
                 }}
             >
                 {showUpdateMovieForm[movie.id] ? "Hide " : "Show "}

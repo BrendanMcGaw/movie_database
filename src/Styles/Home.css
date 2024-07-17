@@ -1,7 +1,7 @@
 .homepageContainer {
     background-color: #0f0606;
     align-content: center;
-    height: calc(100vh - 152px);
+    height: calc(100vh - 139px);
     display: flex;
     flex-direction: column;
     justify-content: center;

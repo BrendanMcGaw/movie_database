@@ -1,7 +1,95 @@
-.pageContent {
+.moviePageContentContainer {
+    font-size: 1rem;
+
+    /* Potentially looks really good without full size of screen. Consider the design. */
+}
+
+.moviePageContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    height: 86.3vh;
+    font-size: 1rem;
+}
+
+.movieTitle {
+    font-size: 72px;
+    grid-column: 3/5;
+    grid-row: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.movieTitleSection {
+    grid-column: 3/5;
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.movieDescription {
+    font-size: 16px;
+    grid-column: 3/5;
+    grid-row: 2;
+}
+
+.runtimeAndYearContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+}
+
+.movieActorsContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: start;
+    text-align: left;
+    grid-row: 3;
+    grid-column: 1/5;
+}
+.movieActorsHeading {
+    margin: 0px;
+    font-style: italic;
+}
+.movieActors {
+    margin: 3px;
+    margin-left: 0;
+}
+
+.descriptionContainer {
+    display: flex;
+    grid-column: 2;
+    grid-row: 1;
     justify-content: center;
-    margin-top: 20px;
+}
+
+/* .backdropImage {
+    position: absolute;
+    margin-left: 0;
+    margin-right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100vh;
+    box-shadow: 0 0 155px 8px black;
+} */
+
+.backgroundImage {
+    /* Gives our moviePage background image a nice effect that blends the colors into the theme of the page. */
+    position: absolute;
+    z-index: -2;
+    right: 0px;
+    top: -12px;
+    filter: blur(4px) saturate(125%) brightness(125%);
+    opacity: 55%;
+    width: 100vw;
+    height: 100vh;
+    /* TODO: Create animation loop of filter setting changes to make it look like its glowing? */
+}
+
+.description {
+    grid-area: middleColumn;
 }

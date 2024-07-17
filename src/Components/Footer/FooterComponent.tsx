@@ -1,6 +1,7 @@
 import React from "react";
 import { StyledFooter } from "./FooterStyle";
 import { FaGithub } from "react-icons/fa";
+import { Pagination } from "antd";
 
 export const Footer = () => {
     return (
